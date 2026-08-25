@@ -1,5 +1,3 @@
-"use client";
-
 import LoadingScreen from "@/components/LoadingScreen";
 import ScrollProgress from "@/components/ScrollProgress";
 import CursorGlow from "@/components/CursorGlow";

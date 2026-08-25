@@ -1,9 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   Volume2,
   VolumeX,
@@ -19,7 +17,14 @@ import {
   BarChart2,
 } from "lucide-react";
 import { playChime } from "@/lib/audio";
-import RoundTableScene from "./roundtable/RoundTableScene";
+import dynamic from "next/dynamic";
+
+const RoundTableScene = dynamic(() => import("./roundtable/RoundTableScene"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full" style={{ aspectRatio: "16 / 9", maxHeight: "680px", background: "#060F09" }} />
+  ),
+});
 import { roundTableServices } from "@/data/roundTableServices";
 
 const ICON_MAP: Record<string, React.ReactNode> = {

@@ -61,6 +61,7 @@ export default function Footer() {
                   src="/images/brand/gk-shield-vector.png"
                   alt="Green Knights Shield"
                   fill
+                  sizes="48px"
                   className="object-contain"
                 />
               </div>

@@ -341,6 +341,7 @@ export default function RoundTableScene({
             src="/images/brand/gk-shield-transparent.png"
             alt="Green Knights Official Shield"
             fill
+            sizes="(max-width: 768px) 80px, 135px"
             className="object-contain"
           />
         </div>

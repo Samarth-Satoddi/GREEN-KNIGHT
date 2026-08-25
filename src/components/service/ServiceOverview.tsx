@@ -1,5 +1,3 @@
-"use client";
-
 import { CheckCircle2, ShieldCheck, Layers } from "lucide-react";
 import { ServiceData } from "@/data/services";
 

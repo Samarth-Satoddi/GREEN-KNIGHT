@@ -409,6 +409,7 @@ export default function RoundTableInteractive({
             src="/images/brand/gk-shield-premium.png"
             alt="Green Knights Shield"
             fill
+            sizes="(max-width: 768px) 80px, 120px"
             className="object-contain drop-shadow-[0_0_14px_rgba(11,110,79,0.9)]"
           />
         </div>

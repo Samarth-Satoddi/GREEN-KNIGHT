@@ -4,7 +4,14 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Volume2, VolumeX, Shield, ArrowRight } from "lucide-react";
 import { playChime } from "@/lib/audio";
-import RoundTableScene from "./RoundTableScene";
+import dynamic from "next/dynamic";
+
+const RoundTableScene = dynamic(() => import("./RoundTableScene"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full" style={{ aspectRatio: "16 / 9", maxHeight: "680px", background: "#060F09" }} />
+  ),
+});
 import RoundTableMobile from "./RoundTableMobile";
 
 interface RoundTableExperienceProps {

@@ -1,5 +1,3 @@
-"use client";
-
 import { ServiceData } from "@/data/services";
 import * as LucideIcons from "lucide-react";
 

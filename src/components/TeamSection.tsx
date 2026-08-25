@@ -1,5 +1,3 @@
-"use client";
-
 import { Users, CheckCircle2 } from "lucide-react";
 import { SectionHeader } from "./SectionWrapper";
 

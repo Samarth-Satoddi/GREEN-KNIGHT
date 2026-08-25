@@ -1,5 +1,3 @@
-"use client";
-
 import { ServiceData } from "@/data/services";
 import { Award } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";

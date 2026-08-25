@@ -1,5 +1,3 @@
-"use client";
-
 import { SectionHeader } from "./SectionWrapper";
 import { MessageSquareCheck } from "lucide-react";
 

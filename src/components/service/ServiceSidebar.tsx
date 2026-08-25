@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { allServices } from "@/data/services";
 import { Sparkles, ChevronRight, Layers, ArrowLeft } from "lucide-react";

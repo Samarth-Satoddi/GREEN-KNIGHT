@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { SectionHeader } from "./SectionWrapper";

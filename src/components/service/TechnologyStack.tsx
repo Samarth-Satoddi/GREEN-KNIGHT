@@ -1,5 +1,3 @@
-"use client";
-
 import { ServiceData } from "@/data/services";
 import { Code2 } from "lucide-react";
 

@@ -1,5 +1,3 @@
-"use client";
-
 import { ServiceData } from "@/data/services";
 import { Building2, HeartPulse, Landmark, ShoppingBag, GraduationCap, ShieldAlert, Factory, Truck, Globe } from "lucide-react";
 

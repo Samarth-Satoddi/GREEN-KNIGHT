@@ -105,6 +105,7 @@ export default function Navbar() {
                   src="/images/brand/gk-shield-vector.png"
                   alt="Green Knights Shield"
                   fill
+                  sizes="44px"
                   className="object-contain"
                   priority
                 />
