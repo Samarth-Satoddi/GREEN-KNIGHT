@@ -71,6 +71,7 @@ export default function WhyUs() {
   return (
     <section
       id="why-us"
+      ref={ref}
       className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
       style={{
         background:

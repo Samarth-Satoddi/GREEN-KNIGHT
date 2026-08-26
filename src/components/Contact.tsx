@@ -36,8 +36,11 @@ export default function Contact() {
     company: "",
     service: "",
     message: "",
+    _gotcha: "",
   });
+  const [mountTime] = useState(() => Date.now());
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -48,11 +51,37 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1500));
-    setStatus("success");
-    setTimeout(() => setStatus("idle"), 4000);
-    setForm({ name: "", email: "", company: "", service: "", message: "" });
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_name: form.name,
+          email: form.email,
+          company: form.company,
+          service: form.service,
+          message: form.message,
+          honeypot: form._gotcha,
+          timestamp: mountTime,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        setStatus("error");
+        setErrorMessage(data.error || "Failed to send message. Please try again.");
+        return;
+      }
+
+      setStatus("success");
+      setForm({ name: "", email: "", company: "", service: "", message: "", _gotcha: "" });
+    } catch {
+      setStatus("error");
+      setErrorMessage("Network error. Please check your connection and try again.");
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -219,6 +248,31 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                  {status === "error" && errorMessage && (
+                    <div
+                      className="p-4 rounded-xl text-[15px] font-medium"
+                      style={{
+                        background: "rgba(220, 38, 38, 0.08)",
+                        border: "1px solid rgba(220, 38, 38, 0.25)",
+                        color: "#DC2626",
+                      }}
+                    >
+                      {errorMessage}
+                    </div>
+                  )}
+
+                  {/* Honeypot field (hidden from genuine users) */}
+                  <div style={{ display: "none" }} aria-hidden="true">
+                    <input
+                      type="text"
+                      name="_gotcha"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={form._gotcha}
+                      onChange={handleChange}
+                    />
+                  </div>
+
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label
