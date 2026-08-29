@@ -107,71 +107,72 @@ export default async function TechnologyDetailPage({ params }: PageProps) {
           </nav>
 
           {/* ── 1. Hero Section ── */}
+          {/* ── 1. Hero Section ── */}
           <div
-            className="p-8 sm:p-12 rounded-3xl mb-12 relative overflow-hidden"
+            className="p-5 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl mb-8 sm:mb-12 relative overflow-hidden"
             style={{
               background: "linear-gradient(135deg, rgba(11,110,79,0.08) 0%, rgba(201,162,39,0.08) 100%)",
               border: "1px solid rgba(11,110,79,0.2)",
               boxShadow: "0 20px 50px rgba(11,110,79,0.06)",
             }}
           >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 rounded-2xl bg-white/90 shadow-md flex items-center justify-center">
-                <GetTechIcon name={tech.name} size={36} />
+            <div className="flex items-center gap-3.5 sm:gap-4 mb-3 sm:mb-4">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-white/90 shadow-md flex items-center justify-center flex-shrink-0">
+                <GetTechIcon name={tech.name} size={32} />
               </div>
-              <div>
-                <span className="text-[13px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full bg-[#0B6E4F]15 text-[#0B6E4F] inline-block mb-1">
+              <div className="min-w-0">
+                <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wider px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-[#0B6E4F]15 text-[#0B6E4F] inline-block mb-1">
                   {tech.category}
                 </span>
                 <h1
-                  className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold"
+                  className="text-2xl xs:text-3xl sm:text-4xl lg:text-[50px] font-extrabold truncate"
                   style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}
                 >
                   {tech.name}
                 </h1>
               </div>
             </div>
-            <p className="text-[17px] sm:text-[18px] leading-[1.7] text-gray-700 max-w-[750px] mt-4 font-medium">
+            <p className="text-[15px] sm:text-[18px] leading-[1.7] text-gray-700 dark:text-slate-200 max-w-[750px] mt-3 sm:mt-4 font-medium">
               {tech.shortIntro}
             </p>
           </div>
 
           {/* ── 2. Overview Section ── */}
-          <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-extrabold mb-5" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
+          <section className="mb-10 sm:mb-12">
+            <h2 className="text-xl sm:text-3xl font-extrabold mb-4 sm:mb-5" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
               Technology Overview
             </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-7 rounded-2xl bg-white/80 border border-black/5 shadow-xs">
-                <h3 className="text-[15px] font-extrabold uppercase text-[#0B6E4F] tracking-wider mb-2.5 flex items-center gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+              <div className="p-5 sm:p-7 rounded-2xl bg-white/80 dark:bg-emerald-950/40 border border-black/5 dark:border-emerald-800/30 shadow-xs">
+                <h3 className="text-[14px] sm:text-[15px] font-extrabold uppercase text-[#0B6E4F] dark:text-emerald-400 tracking-wider mb-2 sm:mb-2.5 flex items-center gap-2">
                   <Layers size={18} />
                   What is {tech.name}?
                 </h3>
-                <p className="text-[16px] leading-[1.7] text-gray-700">
+                <p className="text-[14.5px] sm:text-[16px] leading-[1.7] text-gray-700 dark:text-slate-300">
                   {tech.overview.description}
                 </p>
               </div>
 
-              <div className="p-7 rounded-2xl bg-white/80 border border-black/5 shadow-xs">
-                <h3 className="text-[15px] font-extrabold uppercase text-[#C9A227] tracking-wider mb-2.5 flex items-center gap-2">
+              <div className="p-5 sm:p-7 rounded-2xl bg-white/80 dark:bg-emerald-950/40 border border-black/5 dark:border-emerald-800/30 shadow-xs">
+                <h3 className="text-[14px] sm:text-[15px] font-extrabold uppercase text-[#C9A227] tracking-wider mb-2 sm:mb-2.5 flex items-center gap-2">
                   <Zap size={18} />
                   Enterprise Importance
                 </h3>
-                <p className="text-[16px] leading-[1.7] text-gray-700">
+                <p className="text-[14.5px] sm:text-[16px] leading-[1.7] text-gray-700 dark:text-slate-300">
                   {tech.overview.importance}
                 </p>
               </div>
             </div>
 
-            <div className="mt-6 p-7 rounded-2xl bg-white/80 border border-black/5 shadow-xs">
-              <h3 className="text-[15px] font-extrabold uppercase text-gray-800 tracking-wider mb-4">
+            <div className="mt-4 sm:mt-6 p-5 sm:p-7 rounded-2xl bg-white/80 dark:bg-emerald-950/40 border border-black/5 dark:border-emerald-800/30 shadow-xs">
+              <h3 className="text-[14px] sm:text-[15px] font-extrabold uppercase text-gray-800 dark:text-slate-200 tracking-wider mb-3 sm:mb-4">
                 Key Enterprise Use Cases
               </h3>
-              <div className="grid sm:grid-cols-2 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
                 {tech.overview.enterpriseUseCases.map((useCase, idx) => (
-                  <div key={idx} className="flex items-center gap-2.5 text-[15px] font-semibold text-gray-800">
-                    <CheckCircle2 size={16} className="text-[#0B6E4F] flex-shrink-0" />
-                    {useCase}
+                  <div key={idx} className="flex items-center gap-2 text-[14px] sm:text-[15px] font-semibold text-gray-800 dark:text-slate-200">
+                    <CheckCircle2 size={16} className="text-[#0B6E4F] dark:text-emerald-400 flex-shrink-0" />
+                    <span>{useCase}</span>
                   </div>
                 ))}
               </div>
@@ -179,31 +180,31 @@ export default async function TechnologyDetailPage({ params }: PageProps) {
           </section>
 
           {/* ── 3. Why Green Knights Uses It ── */}
-          <section className="mb-12 p-8 sm:p-10 rounded-3xl bg-[#0a1f15] text-white border border-[#C9A227]35">
-            <span className="text-[13px] font-bold uppercase tracking-widest text-[#C9A227] inline-block mb-2">
+          <section className="mb-10 sm:mb-12 p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#0a1f15] text-white border border-[#C9A227]35">
+            <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-widest text-[#C9A227] inline-block mb-1.5 sm:mb-2">
               Architecture &amp; Strategy
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold mb-4 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h2 className="text-xl sm:text-3xl font-extrabold mb-3 sm:mb-4 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
               Why Green Knights Leverages {tech.name}
             </h2>
-            <p className="text-[16px] sm:text-[17px] leading-[1.7] text-white/85 max-w-[750px]">
+            <p className="text-[14.5px] sm:text-[17px] leading-[1.7] text-white/85 max-w-[750px]">
               {tech.whyGreenKnightsUsesIt}
             </p>
           </section>
 
           {/* ── 4. Key Features ── */}
-          <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-extrabold mb-6" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
+          <section className="mb-10 sm:mb-12">
+            <h2 className="text-xl sm:text-3xl font-extrabold mb-4 sm:mb-6" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
               Key Technical Features
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               {tech.keyFeatures.map((feat, idx) => (
-                <div key={idx} className="p-6 rounded-2xl bg-white/80 border border-black/5 shadow-xs">
-                  <h3 className="text-[17px] font-bold text-gray-900 mb-2 flex items-center gap-2">
-                    <Sparkles size={16} className="text-[#0B6E4F]" />
+                <div key={idx} className="p-5 sm:p-6 rounded-2xl bg-white/80 dark:bg-emerald-950/40 border border-black/5 dark:border-emerald-800/30 shadow-xs">
+                  <h3 className="text-[16px] sm:text-[17px] font-bold text-gray-900 dark:text-slate-100 mb-2 flex items-center gap-2">
+                    <Sparkles size={16} className="text-[#0B6E4F] dark:text-emerald-400" />
                     {feat.title}
                   </h3>
-                  <p className="text-[15px] sm:text-[16px] leading-[1.7] text-gray-600">
+                  <p className="text-[14px] sm:text-[16px] leading-[1.7] text-gray-600 dark:text-slate-300">
                     {feat.description}
                   </p>
                 </div>
@@ -212,18 +213,18 @@ export default async function TechnologyDetailPage({ params }: PageProps) {
           </section>
 
           {/* ── 5. Business Benefits ── */}
-          <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-extrabold mb-6" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
+          <section className="mb-10 sm:mb-12">
+            <h2 className="text-xl sm:text-3xl font-extrabold mb-4 sm:mb-6" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
               Business &amp; ROI Benefits
             </h2>
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {tech.businessBenefits.map((benefit, idx) => (
-                <div key={idx} className="p-7 rounded-2xl bg-white/80 border border-[#0B6E4F]18 shadow-xs">
-                  <h3 className="text-[18px] font-bold text-[#0B6E4F] mb-2 flex items-center gap-2">
+                <div key={idx} className="p-5 sm:p-7 rounded-2xl bg-white/80 dark:bg-emerald-950/40 border border-[#0B6E4F]18 shadow-xs">
+                  <h3 className="text-[16px] sm:text-[18px] font-bold text-[#0B6E4F] dark:text-emerald-400 mb-2 flex items-center gap-2">
                     <ShieldCheck size={20} />
                     {benefit.title}
                   </h3>
-                  <p className="text-[15px] sm:text-[16px] leading-[1.7] text-gray-600">
+                  <p className="text-[14px] sm:text-[16px] leading-[1.7] text-gray-600 dark:text-slate-300">
                     {benefit.description}
                   </p>
                 </div>
@@ -232,19 +233,19 @@ export default async function TechnologyDetailPage({ params }: PageProps) {
           </section>
 
           {/* ── 6. Services Using This Technology ── */}
-          <section className="mb-12">
-            <h2 className="text-2xl sm:text-3xl font-extrabold mb-5" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
+          <section className="mb-10 sm:mb-12">
+            <h2 className="text-xl sm:text-3xl font-extrabold mb-4 sm:mb-5" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
               Services Powered by {tech.name}
             </h2>
-            <div className="flex flex-wrap gap-3.5">
+            <div className="flex flex-wrap gap-2.5 sm:gap-3.5">
               {tech.relatedServices.map((svc, idx) => (
                 <Link
                   key={idx}
                   href={`/services/${svc.slug}`}
-                  className="px-6 py-3.5 rounded-2xl bg-white/90 border border-[#0B6E4F]25 shadow-xs hover:border-[#0B6E4F] hover:shadow-md transition-all flex items-center gap-2.5 text-[15px] font-bold text-[#0B6E4F]"
+                  className="px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-2xl bg-white/90 dark:bg-emerald-950/50 border border-[#0B6E4F]25 shadow-xs hover:border-[#0B6E4F] hover:shadow-md transition-all flex items-center gap-2 text-[14px] sm:text-[15px] font-bold text-[#0B6E4F] dark:text-emerald-400"
                 >
-                  <Briefcase size={16} />
-                  {svc.name}
+                  <Briefcase size={15} />
+                  <span>{svc.name}</span>
                   <ArrowRight size={14} />
                 </Link>
               ))}
@@ -252,16 +253,16 @@ export default async function TechnologyDetailPage({ params }: PageProps) {
           </section>
 
           {/* ── 7. Related Technologies ── */}
-          <section className="mb-16">
-            <h2 className="text-xl sm:text-2xl font-bold mb-5" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
+          <section className="mb-12 sm:mb-16">
+            <h2 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-5" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
               Related Technologies
             </h2>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2.5 sm:gap-3">
               {tech.relatedTechSlugs.map((relSlug) => {
                 const relTech = getTechnologyData(relSlug);
                 return (
                   <Link key={relSlug} href={`/technologies/${relSlug}`}>
-                    <span className="px-4.5 py-2.5 rounded-xl bg-white/80 border border-black/5 text-[14px] sm:text-[15px] font-semibold text-gray-700 hover:border-[#0B6E4F] hover:text-[#0B6E4F] transition-all inline-flex items-center gap-2 shadow-xs">
+                    <span className="px-3.5 py-2 sm:px-4.5 sm:py-2.5 rounded-xl bg-white/80 dark:bg-emerald-950/50 border border-black/5 dark:border-emerald-800/30 text-[13.5px] sm:text-[15px] font-semibold text-gray-700 dark:text-slate-200 hover:border-[#0B6E4F] hover:text-[#0B6E4F] transition-all inline-flex items-center gap-1.5 sm:gap-2 shadow-xs">
                       <span>{relTech.categoryEmoji}</span>
                       <span>{relTech.name}</span>
                     </span>
@@ -272,10 +273,10 @@ export default async function TechnologyDetailPage({ params }: PageProps) {
           </section>
 
           {/* ── Pagination: Previous / Next Technology ── */}
-          <div className="flex items-center justify-between pt-8 border-t border-black/10 mb-16">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-6 sm:pt-8 border-t border-black/10 dark:border-white/10 mb-12 sm:mb-16">
             <Link
               href={`/technologies/${prevSlug}`}
-              className="flex items-center gap-2 text-[14px] font-bold text-gray-600 hover:text-[#0B6E4F] transition-colors"
+              className="flex items-center gap-2 text-[13.5px] sm:text-[14px] font-bold text-gray-600 dark:text-slate-300 hover:text-[#0B6E4F] dark:hover:text-emerald-400 transition-colors"
             >
               <ArrowLeft size={16} />
               Previous: {prevTech.name}
@@ -283,7 +284,7 @@ export default async function TechnologyDetailPage({ params }: PageProps) {
 
             <Link
               href={`/technologies/${nextSlug}`}
-              className="flex items-center gap-2 text-[14px] font-bold text-gray-600 hover:text-[#0B6E4F] transition-colors"
+              className="flex items-center justify-end sm:justify-start gap-2 text-[13.5px] sm:text-[14px] font-bold text-gray-600 dark:text-slate-300 hover:text-[#0B6E4F] dark:hover:text-emerald-400 transition-colors"
             >
               Next: {nextTech.name}
               <ArrowRight size={16} />
@@ -291,16 +292,16 @@ export default async function TechnologyDetailPage({ params }: PageProps) {
           </div>
 
           {/* ── 8. Call To Action ── */}
-          <div className="p-8 sm:p-12 rounded-3xl text-center bg-gradient-to-r from-[#0B6E4F] to-[#145A32] text-white shadow-2xl">
-            <h2 className="text-2xl sm:text-4xl font-extrabold mb-4 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <div className="p-6 sm:p-12 rounded-2xl sm:rounded-3xl text-center bg-gradient-to-r from-[#0B6E4F] to-[#145A32] text-white shadow-2xl">
+            <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold mb-3 sm:mb-4 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
               Need an Enterprise Solution Powered by {tech.name}?
             </h2>
-            <p className="text-[16px] sm:text-[18px] text-white/90 max-w-[750px] mx-auto mb-8 leading-[1.7]">
+            <p className="text-[15px] sm:text-[18px] text-white/90 max-w-[750px] mx-auto mb-6 sm:mb-8 leading-[1.7]">
               Connect with senior architects at Green Knights of Tech &amp; AI to discuss your technical architecture and project requirements.
             </p>
             <Link
               href="/#contact"
-              className="btn-shine inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-bold text-[16px] bg-white text-[#0B6E4F] shadow-lg hover:shadow-xl transition-all"
+              className="btn-shine inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl font-bold text-[15px] sm:text-[16px] bg-white text-[#0B6E4F] shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
             >
               Talk to Our Experts
               <ArrowRight size={18} />

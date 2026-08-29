@@ -234,7 +234,7 @@ export default function RoundTableScene({
               }}
               className={
                 large
-                  ? "absolute group flex flex-col items-center justify-center gap-1 rounded-xl cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] transition-all duration-300 backdrop-blur-md px-3 py-2 sm:px-4 sm:py-2.5 min-w-[85px] sm:min-w-[105px] md:min-w-[125px] pointer-events-auto shadow-2xl"
+                  ? "absolute group flex flex-col items-center justify-center gap-1 rounded-xl cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] transition-all duration-300 backdrop-blur-md px-2 py-1 xs:px-3 xs:py-2 sm:px-4 sm:py-2.5 min-w-[66px] xs:min-w-[85px] sm:min-w-[105px] md:min-w-[125px] pointer-events-auto shadow-2xl"
                   : "absolute group flex flex-col items-center justify-center gap-0.5 rounded-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] transition-all duration-300 backdrop-blur-md px-2 py-1 min-w-[62px] sm:min-w-[68px] pointer-events-auto"
               }
               style={{

@@ -118,7 +118,7 @@ export default function Services() {
           subtitle="Eight premium service pillars, each crafted to solve complex enterprise challenges and accelerate your digital journey."
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {services.map((svc, i) => (
             <motion.div
               key={svc.title}
@@ -128,7 +128,7 @@ export default function Services() {
             >
               <Link
                 href={`/services/${svc.slug}`}
-                className="group block relative rounded-2xl p-7 sm:p-8 overflow-hidden h-full flex flex-col justify-between cursor-pointer"
+                className="group block relative rounded-2xl p-6 sm:p-8 overflow-hidden h-full flex flex-col justify-between cursor-pointer"
                 style={{
                   background: "var(--glass-bg)",
                   backdropFilter: "blur(12px)",
@@ -148,7 +148,7 @@ export default function Services() {
                   {/* Badge */}
                   {svc.badge && (
                     <span
-                      className="absolute top-0 right-0 text-[13px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl"
+                      className="absolute top-0 right-0 text-[12px] sm:text-[13px] font-bold px-2.5 py-1 rounded-bl-xl rounded-tr-xl"
                       style={{
                         background:
                           svc.badge === "Core Offering"
@@ -164,7 +164,7 @@ export default function Services() {
                   )}
 
                   <motion.div
-                    className="w-13 h-13 rounded-xl flex items-center justify-center mb-5"
+                    className="w-12 h-12 sm:w-13 sm:h-13 rounded-xl flex items-center justify-center mb-4 sm:mb-5"
                     style={{
                       background: `${svc.color}15`,
                       color: svc.color,
@@ -176,22 +176,22 @@ export default function Services() {
                   </motion.div>
 
                   <h3
-                    className="font-bold text-xl sm:text-[24px] mb-3 leading-snug group-hover:text-[#0B6E4F] transition-colors"
+                    className="font-bold text-lg sm:text-[22px] lg:text-[24px] mb-2.5 sm:mb-3 leading-snug group-hover:text-[#0B6E4F] transition-colors"
                     style={{ color: "var(--text)" }}
                   >
                     {svc.title}
                   </h3>
                   <p
-                    className="text-[16px] sm:text-[17px] leading-[1.75] mb-6 font-normal"
+                    className="text-[15px] sm:text-[17px] leading-[1.7] mb-5 sm:mb-6 font-normal"
                     style={{ color: "var(--text-muted)" }}
                   >
                     {svc.description}
                   </p>
                 </div>
 
-                <div className="relative z-10 mt-auto pt-4 border-t border-black/5">
+                <div className="relative z-10 mt-auto pt-4 border-t border-black/5 dark:border-white/5">
                   <div
-                    className="flex items-center justify-between text-[16px] font-bold transition-colors duration-200"
+                    className="flex items-center justify-between text-[15px] sm:text-[16px] font-bold transition-colors duration-200"
                     style={{ color: svc.color }}
                   >
                     <span>Learn More</span>
@@ -204,10 +204,10 @@ export default function Services() {
         </div>
 
         {/* View All Services Button */}
-        <div className="mt-14 text-center">
+        <div className="mt-12 sm:mt-14 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2.5 px-8 py-4.5 rounded-xl font-bold text-[16px] sm:text-[17px] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:px-8 sm:py-4.5 rounded-xl font-bold text-[15px] sm:text-[17px] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all w-full sm:w-auto"
             style={{
               background: "linear-gradient(135deg, #0B6E4F 0%, #145A32 100%)",
             }}

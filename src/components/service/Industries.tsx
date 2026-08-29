@@ -31,11 +31,11 @@ export default function Industries({ service }: IndustriesProps) {
         </h2>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {service.industries.map((ind, i) => (
           <div
             key={i}
-            className="p-7 rounded-2xl flex flex-col justify-between"
+            className="p-5 sm:p-7 rounded-2xl flex flex-col justify-between"
             style={{
               background: "var(--glass-bg)",
               border: "1px solid var(--glass-border)",
@@ -44,18 +44,18 @@ export default function Industries({ service }: IndustriesProps) {
             <div>
               <div className="flex items-center gap-3.5 mb-4">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{ background: `${service.color}15`, color: service.color }}
                 >
                   {getIndustryIcon(ind.industry)}
                 </div>
-                <div>
-                  <span className="text-[13px] font-bold text-[#C9A227] uppercase tracking-wider block mb-0.5">{ind.industry}</span>
-                  <h3 className="font-bold text-lg sm:text-xl" style={{ color: "var(--text)" }}>{ind.title}</h3>
+                <div className="min-w-0">
+                  <span className="text-[12px] sm:text-[13px] font-bold text-[#C9A227] uppercase tracking-wider block mb-0.5">{ind.industry}</span>
+                  <h3 className="font-bold text-base sm:text-xl truncate" style={{ color: "var(--text)" }}>{ind.title}</h3>
                 </div>
               </div>
 
-              <p className="text-[15px] sm:text-[16px] leading-[1.75] mb-5" style={{ color: "var(--text-muted)" }}>
+              <p className="text-[14.5px] sm:text-[16px] leading-[1.75] mb-5" style={{ color: "var(--text-muted)" }}>
                 {ind.useCase}
               </p>
             </div>

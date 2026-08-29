@@ -83,7 +83,7 @@ export default function RoundTablePage() {
             </span>
 
             <h1
-              className="text-[42px] sm:text-[60px] lg:text-[72px] font-extrabold tracking-tight leading-[1.05] mb-5"
+              className="text-[32px] xs:text-[44px] sm:text-[60px] lg:text-[72px] font-extrabold tracking-tight leading-[1.05] mb-5"
               style={{ fontFamily: "'Playfair Display', serif", color: '#F5EED0' }}
             >
               The Green Knights
@@ -188,9 +188,9 @@ export default function RoundTablePage() {
             }}
           />
           <div className="relative z-10 max-w-[1440px] mx-auto">
-            <div className="text-center mb-12 sm:mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2
-                className="text-[32px] sm:text-[46px] lg:text-[56px] font-extrabold tracking-tight mb-3"
+                className="text-[26px] xs:text-[34px] sm:text-[46px] lg:text-[56px] font-extrabold tracking-tight mb-3"
                 style={{ fontFamily: "'Playfair Display', serif", color: '#F5EED0' }}
               >
                 Eight Pillars.{' '}
@@ -205,27 +205,27 @@ export default function RoundTablePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 sm:gap-4">
               {roundTableServices.map((svc) => (
                 <Link
                   key={svc.id}
                   href={svc.slug}
-                  className="rt-pillar-card group flex flex-col items-center text-center p-4 sm:p-5 rounded-xl"
+                  className="rt-pillar-card group flex flex-col items-center text-center p-3.5 sm:p-5 rounded-xl"
                 >
                   <div
-                    className="mb-3 transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(201,162,39,0.7)]"
+                    className="mb-2.5 sm:mb-3 transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(201,162,39,0.7)]"
                     style={{ color: '#C9A227' }}
                   >
                     {ICON_MAP[svc.iconName]}
                   </div>
                   <h3
-                    className="text-[10.5px] sm:text-[11.5px] font-extrabold uppercase tracking-wide leading-snug mb-2"
+                    className="text-[10px] sm:text-[11.5px] font-extrabold uppercase tracking-wide leading-snug mb-1.5 sm:mb-2"
                     style={{ color: '#F5EED0' }}
                   >
                     {svc.name}
                   </h3>
                   <p
-                    className="text-[9.5px] sm:text-[10.5px] leading-relaxed"
+                    className="text-[9px] sm:text-[10.5px] leading-relaxed"
                     style={{ color: 'rgba(245,238,208,0.45)' }}
                   >
                     {PILLAR_DESC[svc.id] ?? ''}
@@ -237,16 +237,16 @@ export default function RoundTablePage() {
         </section>
 
         {/* SECTION 5 - CTA BANNER */}
-        <section className="px-4 sm:px-6 lg:px-8 pb-20 sm:pb-24 max-w-[1440px] mx-auto">
+        <section className="px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 max-w-[1440px] mx-auto">
           <div
-            className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 p-7 sm:p-9 lg:p-11 rounded-2xl sm:rounded-3xl"
+            className="flex flex-col sm:flex-row items-center gap-5 sm:gap-8 p-6 sm:p-9 lg:p-11 rounded-2xl sm:rounded-3xl"
             style={{
               background: 'linear-gradient(135deg, #0A200E 0%, #06120A 100%)',
               border: '1.5px solid rgba(201,162,39,0.38)',
               boxShadow: '0 24px 70px rgba(0,0,0,0.55)',
             }}
           >
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
+            <div className="relative w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0">
               <Image
                 src="/images/brand/gk-shield-premium.png"
                 alt="Green Knights Shield"
@@ -258,7 +258,7 @@ export default function RoundTablePage() {
 
             <div className="flex-1 text-center sm:text-left">
               <h2
-                className="text-[22px] sm:text-[26px] lg:text-[30px] font-extrabold mb-1.5"
+                className="text-[20px] sm:text-[26px] lg:text-[30px] font-extrabold mb-1.5"
                 style={{ fontFamily: "'Playfair Display', serif", color: '#F5EED0' }}
               >
                 Ready to Join the Round Table?
@@ -273,7 +273,7 @@ export default function RoundTablePage() {
 
             <Link
               href="/#contact"
-              className="rt-cta-btn flex items-center gap-2.5 px-7 py-4 rounded-xl font-bold flex-shrink-0"
+              className="rt-cta-btn flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl font-bold flex-shrink-0 w-full sm:w-auto"
               style={{
                 background: 'linear-gradient(135deg, #C9A227 0%, #E5BE3B 100%)',
                 color: '#060F09',

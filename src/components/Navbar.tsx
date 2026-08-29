@@ -123,15 +123,15 @@ export default function Navbar() {
                   priority
                 />
               </motion.div>
-              <div className="text-left hidden sm:block">
+              <div className="text-left">
                 <p
-                  className="font-black text-[20px] sm:text-[22px] lg:text-[24px] leading-none tracking-tight uppercase transition-colors"
+                  className="font-black text-[16px] xs:text-[18px] sm:text-[22px] lg:text-[24px] leading-tight tracking-tight uppercase transition-colors"
                   style={{ color: darkMode ? "#34D399" : "#0B6E4F" }}
                 >
                   Green Knights
                 </p>
                 <p
-                  className="text-[13px] sm:text-[14px] font-extrabold leading-none tracking-[0.22em] uppercase mt-1.5 transition-colors"
+                  className="text-[10.5px] xs:text-[12px] sm:text-[14px] font-extrabold leading-tight tracking-[0.14em] sm:tracking-[0.22em] uppercase mt-0.5 transition-colors"
                   style={{ color: darkMode ? "#A7F3D0" : "#145A32", opacity: 0.95 }}
                 >
                   of Tech &amp; AI
@@ -250,7 +250,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[84px] left-0 right-0 z-40 lg:hidden"
+            className="fixed top-[88px] left-0 right-0 z-40 lg:hidden max-h-[calc(100vh-88px)] overflow-y-auto"
             style={{
               background: darkMode
                 ? "rgba(10, 27, 19, 0.98)"
@@ -264,7 +264,7 @@ export default function Navbar() {
                 : "0 16px 40px rgba(11,110,79,0.14)",
             }}
           >
-            <div className="max-w-7xl mx-auto px-5 py-5 flex flex-col gap-1.5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col gap-1.5 pb-8">
               {navLinks.map((link, i) => {
                 const isActive =
                   (link.href === "/" && pathname === "/") ||
@@ -277,9 +277,9 @@ export default function Navbar() {
                     key={link.href}
                     initial={{ opacity: 0, x: -16 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    transition={{ delay: i * 0.04 }}
                     onClick={() => handleNavClick(link.href)}
-                    className="w-full text-left px-4 py-3.5 rounded-xl text-[16px] transition-all flex items-center justify-between cursor-pointer"
+                    className="w-full text-left px-4 py-3.5 rounded-xl text-[16px] transition-all flex items-center justify-between cursor-pointer min-h-[48px]"
                     style={{
                       color: isActive
                         ? "#C9A227"
@@ -303,7 +303,7 @@ export default function Navbar() {
                 );
               })}
               <div
-                className="flex gap-2.5 mt-3 pt-3"
+                className="flex flex-col sm:flex-row gap-2.5 mt-3 pt-3"
                 style={{
                   borderTop: darkMode
                     ? "1px solid rgba(16, 185, 129, 0.2)"
@@ -312,7 +312,7 @@ export default function Navbar() {
               >
                 <button
                   onClick={toggleDark}
-                  className="flex items-center gap-2 px-4 py-3 rounded-xl text-[15px] font-semibold flex-1 justify-center cursor-pointer"
+                  className="flex items-center gap-2 px-4 py-3.5 rounded-xl text-[15px] font-semibold flex-1 justify-center cursor-pointer min-h-[48px]"
                   style={{
                     background: darkMode ? "rgba(16, 185, 129, 0.15)" : "rgba(11,110,79,0.09)",
                     color: darkMode ? "#34D399" : "#0B6E4F",
@@ -320,11 +320,11 @@ export default function Navbar() {
                   }}
                 >
                   {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-                  {darkMode ? "Light" : "Dark"} Mode
+                  {darkMode ? "Light Mode" : "Dark Mode"}
                 </button>
                 <button
                   onClick={() => handleNavClick("/#contact")}
-                  className="flex items-center gap-2 px-4 py-3 rounded-xl text-[16px] font-semibold flex-1 justify-center text-white cursor-pointer"
+                  className="flex items-center gap-2 px-4 py-3.5 rounded-xl text-[16px] font-semibold flex-1 justify-center text-white cursor-pointer min-h-[48px] shadow-md"
                   style={{ background: "linear-gradient(135deg, #0B6E4F, #145A32)", border: "none" }}
                 >
                   Book a Consultation

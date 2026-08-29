@@ -20,7 +20,7 @@ export default function ProcessTimeline({ service }: ProcessTimelineProps) {
         </h2>
       </div>
 
-      <div className="relative pl-6 sm:pl-8 border-l-2 border-[#0B6E4F]30 space-y-8">
+      <div className="relative pl-5 sm:pl-8 border-l-2 border-[#0B6E4F]30 space-y-6 sm:space-y-8">
         {service.process.map((step, i) => (
           <motion.div
             key={i}
@@ -32,42 +32,42 @@ export default function ProcessTimeline({ service }: ProcessTimelineProps) {
           >
             {/* Timeline dot */}
             <div
-              className="absolute -left-[31px] sm:-left-[39px] top-2.5 w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs text-white shadow-md"
+              className="absolute -left-[27px] sm:-left-[39px] top-2.5 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-bold text-[11px] sm:text-xs text-white shadow-md"
               style={{ background: service.color }}
             >
               {i + 1}
             </div>
 
             <div
-              className="p-7 sm:p-8 rounded-2xl"
+              className="p-5 sm:p-8 rounded-2xl"
               style={{
                 background: "var(--glass-bg)",
                 border: "1px solid var(--glass-border)",
               }}
             >
-              <div className="flex flex-wrap items-center justify-between gap-2.5 mb-3.5">
-                <div className="flex items-center gap-3">
-                  <span className="text-[13px] font-bold uppercase tracking-wider px-3 py-1 rounded bg-[#C9A227]18 text-[#C9A227]">
+              <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-2.5 mb-3 sm:mb-3.5">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wider px-2.5 py-0.5 sm:px-3 sm:py-1 rounded bg-[#C9A227]18 text-[#C9A227]">
                     Phase {i + 1}: {step.phase}
                   </span>
-                  <h3 className="font-bold text-[19px] sm:text-[21px]" style={{ color: "var(--text)" }}>
+                  <h3 className="font-bold text-base sm:text-[21px]" style={{ color: "var(--text)" }}>
                     {step.title}
                   </h3>
                 </div>
 
-                <span className="inline-flex items-center gap-1.5 text-[14px] font-semibold" style={{ color: "var(--text-muted)" }}>
+                <span className="inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] font-semibold" style={{ color: "var(--text-muted)" }}>
                   <Clock size={15} />
                   {step.duration}
                 </span>
               </div>
 
-              <p className="text-[16px] leading-[1.7] mb-5 text-gray-600">
+              <p className="text-[14.5px] sm:text-[16px] leading-[1.7] mb-4 sm:mb-5 text-[var(--text-muted)]">
                 {step.description}
               </p>
 
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2 sm:gap-2.5">
                 {step.deliverables.map((del, d) => (
-                  <span key={d} className="inline-flex items-center gap-1.5 text-[13px] px-3.5 py-1.5 rounded bg-[#0B6E4F]08 text-[#0B6E4F] font-semibold">
+                  <span key={d} className="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] px-3 py-1.5 rounded bg-[#0B6E4F]08 text-[#0B6E4F] dark:text-emerald-400 font-semibold">
                     <CheckCircle2 size={14} />
                     {del}
                   </span>

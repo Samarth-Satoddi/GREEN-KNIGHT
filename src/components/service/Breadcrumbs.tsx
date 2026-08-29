@@ -32,21 +32,21 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListSchema) }}
       />
-      <nav aria-label="Breadcrumb" className="py-4 pt-24">
-        <ol className="flex items-center flex-wrap gap-2 text-[13px] sm:text-[14px] font-semibold text-gray-700">
-          <li className="flex items-center gap-1.5 hover:text-[#0B6E4F] transition-colors">
+      <nav aria-label="Breadcrumb" className="py-4 pt-24 sm:pt-28">
+        <ol className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-[12.5px] sm:text-[14px] font-semibold text-gray-700 dark:text-slate-300">
+          <li className="flex items-center gap-1.5 hover:text-[#0B6E4F] dark:hover:text-emerald-400 transition-colors">
             <Home size={15} />
             <Link href="/">Home</Link>
           </li>
           {items.map((item, i) => (
-            <li key={i} className="flex items-center gap-2">
-              <ChevronRight size={14} className="opacity-40" />
+            <li key={i} className="flex items-center gap-1.5 sm:gap-2">
+              <ChevronRight size={13} className="opacity-40" />
               {item.href ? (
-                <Link href={item.href} className="hover:text-[#0B6E4F] transition-colors">
+                <Link href={item.href} className="hover:text-[#0B6E4F] dark:hover:text-emerald-400 transition-colors">
                   {item.label}
                 </Link>
               ) : (
-                <span className="font-bold text-[#0B6E4F]">{item.label}</span>
+                <span className="font-bold text-[#0B6E4F] dark:text-emerald-400 truncate max-w-[200px] sm:max-w-none">{item.label}</span>
               )}
             </li>
           ))}

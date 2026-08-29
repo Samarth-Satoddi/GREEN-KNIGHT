@@ -44,21 +44,21 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
   return (
     <div id="book-consultation" className="scroll-mt-24">
       <div
-        className="rounded-3xl p-8 sm:p-12 relative overflow-hidden"
+        className="rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 relative overflow-hidden"
         style={{
           background: "var(--glass-bg)",
           border: "1px solid var(--glass-border)",
           boxShadow: "0 20px 50px rgba(11,110,79,0.08)",
         }}
       >
-        <div className="max-w-3xl mx-auto text-center mb-10">
-          <span className="text-[13px] sm:text-[14px] font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-[#0B6E4F]15 text-[#0B6E4F] inline-block mb-4 shadow-xs">
+        <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-10">
+          <span className="text-[12px] sm:text-[14px] font-bold uppercase tracking-wider px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#0B6E4F]15 text-[#0B6E4F] inline-block mb-3 sm:mb-4 shadow-xs">
             Book Enterprise Consultation
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-[40px] font-extrabold" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
             Schedule Your Strategic Architecture Session
           </h2>
-          <p className="text-[16px] sm:text-[18px] mt-4 leading-[1.75] max-w-2xl mx-auto font-medium" style={{ color: "var(--text-muted)" }}>
+          <p className="text-[15px] sm:text-[18px] mt-3 sm:mt-4 leading-[1.75] max-w-2xl mx-auto font-medium" style={{ color: "var(--text-muted)" }}>
             Connect directly with senior enterprise architects and technology advisors to discuss your project requirements, scope, and timeline.
           </p>
         </div>
@@ -67,24 +67,24 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="p-8 sm:p-10 rounded-2xl text-center max-w-lg mx-auto bg-[var(--glass-bg)] border border-[var(--glass-border)] shadow-lg"
+            className="p-6 sm:p-10 rounded-2xl text-center max-w-lg mx-auto bg-[var(--glass-bg)] border border-[var(--glass-border)] shadow-lg"
           >
-            <div className="w-16 h-16 rounded-full bg-[#0B6E4F] text-white flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 size={36} />
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#0B6E4F] text-white flex items-center justify-center mx-auto mb-4">
+              <CheckCircle2 size={32} />
             </div>
-            <h3 className="text-2xl font-bold text-[#0B6E4F] mb-3">Consultation Request Received!</h3>
-            <p className="text-[16px] leading-[1.75] mb-6" style={{ color: "var(--text-muted)" }}>
+            <h3 className="text-xl sm:text-2xl font-bold text-[#0B6E4F] mb-3">Consultation Request Received!</h3>
+            <p className="text-[15px] sm:text-[16px] leading-[1.75] mb-6" style={{ color: "var(--text-muted)" }}>
               Thank you, {formData.name}. A senior technical architect from Green Knights will review your project details and reach out via {formData.contactMethod.toLowerCase()} within 4 business hours.
             </p>
             <button
               onClick={() => setSubmitted(false)}
-              className="px-7 py-3.5 rounded-xl text-[16px] font-bold bg-[#0B6E4F] text-white hover:bg-[#145A32] transition-colors"
+              className="px-7 py-3.5 rounded-xl text-[15px] sm:text-[16px] font-bold bg-[#0B6E4F] text-white hover:bg-[#145A32] transition-colors w-full sm:w-auto"
             >
               Submit Another Inquiry
             </button>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
             {/* Full Name */}
             <div>
               <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">

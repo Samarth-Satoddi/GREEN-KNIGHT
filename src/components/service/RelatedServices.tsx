@@ -25,12 +25,12 @@ export default function RelatedServices({ relatedSlugs }: RelatedServicesProps) 
         </h2>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {services.map((svc) => (
           <Link key={svc.slug} href={`/services/${svc.slug}`} className="group">
             <motion.div
               whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(11,110,79,0.12)" }}
-              className="p-7 rounded-2xl h-full flex flex-col justify-between transition-all"
+              className="p-5 sm:p-7 rounded-2xl h-full flex flex-col justify-between transition-all"
               style={{
                 background: "var(--glass-bg)",
                 border: "1px solid var(--glass-border)",
@@ -39,22 +39,22 @@ export default function RelatedServices({ relatedSlugs }: RelatedServicesProps) 
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[13px] font-bold px-3 py-1 rounded-full bg-[#0B6E4F]15 text-[#0B6E4F]">
+                  <span className="text-[12px] sm:text-[13px] font-bold px-3 py-1 rounded-full bg-[#0B6E4F]15 text-[#0B6E4F]">
                     {svc.category}
                   </span>
                   <Sparkles size={16} className="text-[#C9A227]" />
                 </div>
 
-                <h3 className="font-bold text-xl sm:text-2xl mb-3 group-hover:text-[#0B6E4F] transition-colors" style={{ color: "var(--text)" }}>
+                <h3 className="font-bold text-lg sm:text-2xl mb-2 sm:mb-3 group-hover:text-[#0B6E4F] transition-colors" style={{ color: "var(--text)" }}>
                   {svc.title}
                 </h3>
 
-                <p className="text-[15px] sm:text-[16px] leading-[1.75] line-clamp-3 mb-4" style={{ color: "var(--text-muted)" }}>
+                <p className="text-[14px] sm:text-[16px] leading-[1.75] line-clamp-3 mb-4" style={{ color: "var(--text-muted)" }}>
                   {svc.tagline}
                 </p>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-black/5 flex items-center justify-between text-[15px] sm:text-[16px] font-bold text-[#0B6E4F]">
+              <div className="mt-4 pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-[14px] sm:text-[16px] font-bold text-[#0B6E4F] dark:text-emerald-400">
                 <span>Explore Service Page</span>
                 <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
               </div>

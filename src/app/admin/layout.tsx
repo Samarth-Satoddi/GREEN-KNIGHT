@@ -59,7 +59,7 @@ export default async function AdminLayout({
               </div>
 
               {/* Right: User profile, public site link & Logout */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
                 <Link
                   href="/"
                   target="_blank"
@@ -80,6 +80,24 @@ export default async function AdminLayout({
 
                 <AdminLogoutButton />
               </div>
+            </div>
+
+            {/* Mobile navigation row */}
+            <div className="flex md:hidden items-center gap-2 pb-2.5 pt-0.5 border-t border-slate-800/60">
+              <Link
+                href="/admin"
+                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+              >
+                <LayoutDashboard size={14} />
+                Dashboard
+              </Link>
+              <Link
+                href="/admin/enquiries"
+                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+              >
+                <Inbox size={14} />
+                Enquiries
+              </Link>
             </div>
           </div>
         </header>

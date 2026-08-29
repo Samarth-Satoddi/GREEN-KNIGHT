@@ -137,13 +137,13 @@ export default function EnquiriesTable({ initialSubmissions }: EnquiriesTablePro
         </div>
 
         {/* Filters */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3">
           {/* Status Filter */}
-          <div className="relative shrink-0">
+          <div className="relative flex-1 sm:flex-initial shrink-0">
             <select
               value={selectedStatus}
               onChange={handleStatusChange}
-              className="appearance-none bg-slate-950/90 border border-slate-800 rounded-xl pl-3 pr-8 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-emerald-500 cursor-pointer"
+              className="w-full appearance-none bg-slate-950/90 border border-slate-800 rounded-xl pl-3 pr-8 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-emerald-500 cursor-pointer"
             >
               <option value="all">All Statuses</option>
               <option value="new">New</option>
@@ -159,11 +159,11 @@ export default function EnquiriesTable({ initialSubmissions }: EnquiriesTablePro
           </div>
 
           {/* Service Filter */}
-          <div className="relative shrink-0">
+          <div className="relative flex-1 sm:flex-initial shrink-0">
             <select
               value={selectedService}
               onChange={handleServiceChange}
-              className="appearance-none bg-slate-950/90 border border-slate-800 rounded-xl pl-3 pr-8 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-emerald-500 cursor-pointer"
+              className="w-full appearance-none bg-slate-950/90 border border-slate-800 rounded-xl pl-3 pr-8 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-emerald-500 cursor-pointer"
             >
               <option value="all">All Services</option>
               <option value="ai">AI Solutions</option>
@@ -184,7 +184,7 @@ export default function EnquiriesTable({ initialSubmissions }: EnquiriesTablePro
       </div>
 
       {/* Table Container */}
-      <div className="bg-slate-900/80 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
+      <div className="bg-slate-900/80 border border-slate-800 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl">
         {paginatedItems.length === 0 ? (
           <div className="py-16 text-center text-slate-500">
             <Inbox size={44} className="mx-auto mb-3 opacity-30" />

@@ -120,7 +120,7 @@ export default function Contact() {
           subtitle="Join hundreds of forward-thinking enterprises who have trusted Green Knights to transform their technology. Let's discuss what's possible."
         />
 
-        <div className="grid lg:grid-cols-5 gap-10">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-10">
           {/* Left: Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -129,7 +129,7 @@ export default function Contact() {
             className="lg:col-span-2 flex flex-col gap-6"
           >
             <div
-              className="rounded-3xl p-8 sm:p-10"
+              className="rounded-2xl sm:rounded-3xl p-6 sm:p-10"
               style={{
                 background: "linear-gradient(135deg, #0B6E4F, #145A32)",
                 boxShadow: "0 25px 60px rgba(11,110,79,0.3)",
@@ -141,19 +141,19 @@ export default function Contact() {
               >
                 Get in Touch
               </h3>
-              <p className="text-[16px] text-white/85 leading-[1.7] mb-8">
+              <p className="text-[15px] sm:text-[16px] text-white/85 leading-[1.7] mb-6 sm:mb-8">
                 Our knights are ready to serve. Reach out and we&apos;ll respond within 24 hours.
               </p>
 
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-5 sm:gap-6">
                 {contactInfo.map((info) => (
                   <a
                     key={info.label}
                     href={info.href}
-                    className="flex items-start gap-4 group"
+                    className="flex items-start gap-3.5 sm:gap-4 group"
                   >
                     <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                      className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                       style={{
                         background: "rgba(201,162,39,0.2)",
                         color: "#C9A227",
@@ -161,9 +161,9 @@ export default function Contact() {
                     >
                       {info.icon}
                     </div>
-                    <div>
-                      <p className="text-[14px] font-semibold text-white/60 mb-0.5">{info.label}</p>
-                      <p className="text-[16px] sm:text-[17px] text-white font-medium group-hover:text-yellow-300 transition-colors">
+                    <div className="min-w-0">
+                      <p className="text-[13px] sm:text-[14px] font-semibold text-white/60 mb-0.5">{info.label}</p>
+                      <p className="text-[15px] sm:text-[17px] text-white font-medium group-hover:text-yellow-300 transition-colors break-words">
                         {info.value}
                       </p>
                     </div>
@@ -171,29 +171,29 @@ export default function Contact() {
                 ))}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/12">
-                <p className="text-[14px] font-semibold text-white/60 mb-2">Business Hours</p>
-                <p className="text-[16px] text-white font-medium">Monday – Friday: 9:00 AM – 6:00 PM</p>
-                <p className="text-[15px] text-white/80">Emergency support: 24/7</p>
+              <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/12">
+                <p className="text-[13px] sm:text-[14px] font-semibold text-white/60 mb-1.5">Business Hours</p>
+                <p className="text-[15px] sm:text-[16px] text-white font-medium">Monday – Friday: 9:00 AM – 6:00 PM</p>
+                <p className="text-[14px] sm:text-[15px] text-white/80">Emergency support: 24/7</p>
               </div>
             </div>
 
             {/* Map placeholder */}
             <div
-              className="rounded-3xl overflow-hidden flex items-center justify-center p-6"
+              className="rounded-2xl sm:rounded-3xl overflow-hidden flex items-center justify-center p-6"
               style={{
-                height: "220px",
+                height: "180px",
                 background:
                   "linear-gradient(135deg, rgba(11,110,79,0.08), rgba(201,162,39,0.06))",
                 border: "1px solid rgba(11,110,79,0.18)",
               }}
             >
               <div className="text-center">
-                <MapPin size={34} style={{ color: "#0B6E4F", margin: "0 auto 10px" }} />
-                <p className="text-[17px] font-bold" style={{ color: "#0B6E4F" }}>
+                <MapPin size={32} style={{ color: "#0B6E4F", margin: "0 auto 8px" }} />
+                <p className="text-[16px] sm:text-[17px] font-bold" style={{ color: "#0B6E4F" }}>
                   Innovation District
                 </p>
-                <p className="text-[14px] font-medium" style={{ color: "var(--text-muted)" }}>
+                <p className="text-[13px] sm:text-[14px] font-medium" style={{ color: "var(--text-muted)" }}>
                   Interactive Map Location
                 </p>
               </div>
@@ -208,7 +208,7 @@ export default function Contact() {
             className="lg:col-span-3"
           >
             <div
-              className="rounded-3xl p-8 sm:p-10"
+              className="rounded-2xl sm:rounded-3xl p-6 sm:p-10"
               style={{
                 background: "var(--glass-bg)",
                 backdropFilter: "blur(20px)",
@@ -225,7 +225,7 @@ export default function Contact() {
               >
                 Send a Message
               </h3>
-              <p className="text-[16px] sm:text-[17px] mb-6 leading-[1.7]" style={{ color: "var(--text-muted)" }}>
+              <p className="text-[15px] sm:text-[17px] mb-6 leading-[1.7]" style={{ color: "var(--text-muted)" }}>
                 Fill out the form below and a Green Knight will be in touch within 24 hours.
               </p>
 
@@ -242,15 +242,15 @@ export default function Contact() {
                   >
                     Message Sent!
                   </h4>
-                  <p className="text-[16px] sm:text-[17px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
+                  <p className="text-[15px] sm:text-[17px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
                     Thank you for reaching out. Our team will contact you within 24 hours.
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-5 sm:gap-6">
                   {status === "error" && errorMessage && (
                     <div
-                      className="p-4 rounded-xl text-[15px] font-medium"
+                      className="p-4 rounded-xl text-[14.5px] font-medium"
                       style={{
                         background: "rgba(220, 38, 38, 0.08)",
                         border: "1px solid rgba(220, 38, 38, 0.25)",
@@ -273,11 +273,11 @@ export default function Contact() {
                     />
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label
                         htmlFor="name"
-                        className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100"
+                        className="block text-[14px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100"
                       >
                         Full Name *
                       </label>

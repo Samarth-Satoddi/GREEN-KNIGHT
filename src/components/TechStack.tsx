@@ -113,15 +113,15 @@ export default function TechStack() {
         />
 
         {/* Category Tabs */}
-        <div className="flex items-center justify-center flex-wrap gap-2.5 mb-12">
+        <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-2.5 mb-8 sm:mb-12">
           {techCategories.map((cat, i) => (
             <button
               key={cat.title}
               onClick={() => setActiveTab(i)}
-              className={`px-5 py-3 rounded-xl font-bold text-[15px] sm:text-[16px] transition-all cursor-pointer ${
+              className={`px-3.5 py-2 sm:px-5 sm:py-3 rounded-xl font-bold text-[13px] sm:text-[16px] transition-all cursor-pointer ${
                 activeTab === i
                   ? "bg-[#0B6E4F] text-white shadow-md"
-                  : "bg-white/80 text-gray-800 hover:bg-[#0B6E4F]10 hover:text-[#0B6E4F] border border-black/5"
+                  : "bg-white/80 dark:bg-emerald-950/50 text-gray-800 dark:text-slate-200 hover:bg-[#0B6E4F]10 hover:text-[#0B6E4F] border border-black/5 dark:border-emerald-800/30"
               }`}
             >
               {cat.title}
@@ -135,16 +135,16 @@ export default function TechStack() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="rounded-3xl p-8 sm:p-12 shadow-md"
+          className="rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 shadow-md"
           style={{
             background: "var(--glass-bg)",
             backdropFilter: "blur(20px)",
             border: "1px solid var(--glass-border)",
           }}
         >
-          <div className="max-w-2xl mb-8">
+          <div className="max-w-2xl mb-6 sm:mb-8">
             <h3
-              className="text-2xl sm:text-3xl font-extrabold mb-3"
+              className="text-xl sm:text-3xl font-extrabold mb-2.5 sm:mb-3"
               style={{
                 color: "var(--text)",
                 fontFamily: "'Playfair Display', serif",
@@ -152,19 +152,19 @@ export default function TechStack() {
             >
               {techCategories[activeTab].title}
             </h3>
-            <p className="text-[16px] sm:text-[17px] leading-[1.75]" style={{ color: "var(--text-muted)" }}>
+            <p className="text-[15px] sm:text-[17px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
               {techCategories[activeTab].description}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
             {techCategories[activeTab].items.map((tech) => {
               const cardContent = (
                 <div
-                  className="flex items-center gap-3.5 px-4.5 py-3.5 rounded-xl text-[15px] sm:text-[16px] font-semibold cursor-pointer transition-all border border-black/5 dark:border-emerald-800/40 bg-white/90 dark:bg-emerald-950/60 shadow-xs hover:border-[#0B6E4F] dark:hover:border-emerald-400 hover:shadow-md text-gray-800 dark:text-slate-100 hover:text-[#0B6E4F] dark:hover:text-emerald-400"
+                  className="flex items-center gap-3 px-3.5 py-3 sm:px-4.5 sm:py-3.5 rounded-xl text-[14px] sm:text-[16px] font-semibold cursor-pointer transition-all border border-black/5 dark:border-emerald-800/40 bg-white/90 dark:bg-emerald-950/60 shadow-xs hover:border-[#0B6E4F] dark:hover:border-emerald-400 hover:shadow-md text-gray-800 dark:text-slate-100 hover:text-[#0B6E4F] dark:hover:text-emerald-400"
                 >
                   <GetTechIcon name={tech.name} size={22} />
-                  <span>{tech.name}</span>
+                  <span className="truncate">{tech.name}</span>
                 </div>
               );
 
@@ -180,10 +180,10 @@ export default function TechStack() {
         </motion.div>
 
         {/* All Technologies Link */}
-        <div className="mt-12 text-center">
+        <div className="mt-10 sm:mt-12 text-center">
           <Link
             href="/#tech-stack"
-            className="inline-flex items-center gap-2.5 px-8 py-4.5 rounded-xl font-bold text-[16px] sm:text-[17px] text-[#0B6E4F] dark:text-emerald-400 border-2 border-[#0B6E4F] dark:border-emerald-500 bg-white/80 dark:bg-emerald-950/60 hover:bg-[#0B6E4F] dark:hover:bg-emerald-600 hover:text-white dark:hover:text-white transition-all shadow-md"
+            className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:px-8 sm:py-4.5 rounded-xl font-bold text-[15px] sm:text-[17px] text-[#0B6E4F] dark:text-emerald-400 border-2 border-[#0B6E4F] dark:border-emerald-500 bg-white/80 dark:bg-emerald-950/60 hover:bg-[#0B6E4F] dark:hover:bg-emerald-600 hover:text-white dark:hover:text-white transition-all shadow-md w-full sm:w-auto"
           >
             Explore Full Technology Radar
             <ArrowRight size={19} />

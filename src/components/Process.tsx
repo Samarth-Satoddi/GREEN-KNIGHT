@@ -92,14 +92,14 @@ export default function Process() {
         <div className="relative">
           {/* Vertical timeline line */}
           <div
-            className="absolute left-6 lg:left-1/2 top-0 bottom-0 w-0.5 lg:-translate-x-0.5"
+            className="absolute left-5 sm:left-6 lg:left-1/2 top-0 bottom-0 w-0.5 lg:-translate-x-0.5"
             style={{
               background:
                 "linear-gradient(180deg, #0B6E4F, #C9A227, #0B6E4F, #C9A227, #0B6E4F, #145A32)",
             }}
           />
 
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-6 sm:gap-12">
             {steps.map((step, i) => {
               const isEven = i % 2 === 0;
               return (
@@ -108,14 +108,14 @@ export default function Process() {
                   initial={{ opacity: 0, x: isEven ? -40 : 40 }}
                   animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: i * 0.12 }}
-                  className={`relative flex items-start gap-8 ${
+                  className={`relative flex items-start gap-3.5 sm:gap-8 ${
                     isEven ? "lg:flex-row" : "lg:flex-row-reverse"
                   }`}
                 >
                   {/* Step number node */}
                   <div className="relative z-10 flex-shrink-0 ml-0 lg:ml-0">
                     <div
-                      className="w-13 h-13 rounded-full flex items-center justify-center text-white font-bold text-base"
+                      className="w-10 h-10 sm:w-13 sm:h-13 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-base"
                       style={{
                         background: "linear-gradient(135deg, #0B6E4F, #C9A227)",
                         boxShadow: "0 4px 20px rgba(11,110,79,0.4)",
@@ -128,12 +128,12 @@ export default function Process() {
 
                   {/* Content */}
                   <div
-                    className={`flex-1 lg:max-w-[calc(50%-4rem)] ${
+                    className={`flex-1 min-w-0 lg:max-w-[calc(50%-4rem)] ${
                       isEven ? "" : "lg:text-right"
                     }`}
                   >
                     <div
-                      className="group rounded-2xl p-8 cursor-default"
+                      className="group rounded-2xl p-5 sm:p-8 cursor-default"
                       style={{
                         background: "var(--glass-bg)",
                         backdropFilter: "blur(12px)",
@@ -141,12 +141,12 @@ export default function Process() {
                       }}
                     >
                       <div
-                        className={`flex items-center gap-3.5 mb-4 ${
+                        className={`flex flex-wrap items-center gap-2.5 sm:gap-3.5 mb-3 sm:mb-4 ${
                           isEven ? "" : "lg:justify-end"
                         }`}
                       >
                         <div
-                          className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                          className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                           style={{
                             background: "rgba(11,110,79,0.1)",
                             color: "#0B6E4F",
@@ -155,7 +155,7 @@ export default function Process() {
                           {step.icon}
                         </div>
                         <h3
-                          className="text-xl sm:text-2xl font-bold"
+                          className="text-lg sm:text-2xl font-bold"
                           style={{
                             color: "var(--text)",
                             fontFamily: "'Playfair Display', serif",
@@ -164,7 +164,7 @@ export default function Process() {
                           {step.title}
                         </h3>
                         <span
-                          className="ml-auto text-[13px] font-bold px-3 py-1 rounded-full"
+                          className="ml-auto text-[11px] sm:text-[13px] font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full"
                           style={{
                             background: "rgba(201,162,39,0.18)",
                             color: "#C9A227",
@@ -174,7 +174,7 @@ export default function Process() {
                         </span>
                       </div>
                       <p
-                        className="text-[16px] sm:text-[17px] leading-[1.7]"
+                        className="text-[14.5px] sm:text-[17px] leading-[1.7]"
                         style={{ color: "var(--text-muted)" }}
                       >
                         {step.description}

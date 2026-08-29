@@ -23,15 +23,15 @@ export default function ServiceSidebar({ currentSlug }: ServiceSidebarProps) {
         <div
           className="p-6 rounded-2xl"
           style={{
-            background: "rgba(255,255,255,0.78)",
-            border: "1px solid rgba(11,110,79,0.14)",
+            background: "var(--glass-bg)",
+            border: "1px solid var(--glass-border)",
             backdropFilter: "blur(16px)",
             boxShadow: "0 10px 30px rgba(11,110,79,0.05)",
           }}
         >
-          <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-black/5">
+          <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-black/5 dark:border-white/5">
             <Layers size={20} className="text-[#0B6E4F]" />
-            <h3 className="font-bold text-[15px] tracking-wide uppercase text-gray-900">
+            <h3 className="font-bold text-[15px] tracking-wide uppercase" style={{ color: "var(--text)" }}>
               Service Pillars
             </h3>
           </div>
@@ -47,8 +47,11 @@ export default function ServiceSidebar({ currentSlug }: ServiceSidebarProps) {
                   className={`flex items-center justify-between p-3.5 rounded-xl text-[14px] sm:text-[15px] font-semibold transition-all ${
                     isActive
                       ? "bg-[#0B6E4F] text-white shadow-md font-bold"
-                      : "text-gray-700 hover:bg-[#0B6E4F]10 hover:text-[#0B6E4F]"
+                      : "hover:bg-[#0B6E4F]10 hover:text-[#0B6E4F]"
                   }`}
+                  style={{
+                    color: isActive ? "#ffffff" : "var(--text)",
+                  }}
                 >
                   <span className="truncate max-w-[200px]">{svc.title}</span>
                   <ChevronRight

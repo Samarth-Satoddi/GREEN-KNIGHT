@@ -51,8 +51,8 @@ export default function Footer() {
         }}
       />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 pt-16 pb-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 pt-12 sm:pt-16 pb-8 sm:pb-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 mb-12 sm:mb-16">
           {/* Brand column */}
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="flex items-center gap-3.5 group">

@@ -169,10 +169,10 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Main Headline — Reduced by 25-30% for Balanced Proportions */}
+          {/* Main Headline — Fluid Scale for Mobile to Desktop */}
           <motion.h1
             variants={fadeUp}
-            className="text-[32px] sm:text-[44px] md:text-[54px] lg:text-[64px] xl:text-[70px] font-extrabold tracking-tight mb-5 leading-[1.08]"
+            className="text-[28px] xs:text-[34px] sm:text-[46px] md:text-[56px] lg:text-[66px] xl:text-[70px] font-extrabold tracking-tight mb-5 leading-[1.08]"
             style={{
               fontFamily: "'Playfair Display', serif",
               color: "var(--text)",
@@ -276,9 +276,9 @@ export default function Hero() {
           variants={containerVar}
           initial="hidden"
           animate="show"
-          className="mt-14 sm:mt-18 lg:mt-20 w-full max-w-5xl mx-auto"
+          className="mt-12 sm:mt-18 lg:mt-20 w-full max-w-5xl mx-auto"
         >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
             {[
               { value: "Enterprise AI",  label: "Intelligent Automation", accent: "#0B6E4F", icon: <Brain size={22} strokeWidth={2} /> },
               { value: "Cloud Native",   label: "AWS, Azure & GCP",        accent: "#C9A227", icon: <Cloud size={22} strokeWidth={2} /> },
@@ -289,7 +289,7 @@ export default function Hero() {
                 key={stat.label}
                 variants={fadeUp}
                 whileHover={{ y: -6, boxShadow: "0 22px 45px rgba(11,110,79,0.16)" }}
-                className="flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-[20px]"
+                className="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-5 rounded-[20px]"
                 style={{
                   background: "var(--glass-bg)",
                   backdropFilter: "blur(16px)",
@@ -300,7 +300,7 @@ export default function Hero() {
                 }}
               >
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{
                     background: `${stat.accent}18`,
                     border: `1.5px solid ${stat.accent}30`,

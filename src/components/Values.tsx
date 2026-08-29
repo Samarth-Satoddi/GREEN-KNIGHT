@@ -55,7 +55,7 @@ export default function Values() {
   return (
     <section
       id="values"
-      className="py-24 sm:py-32 relative overflow-hidden"
+      className="py-16 sm:py-24 lg:py-32 relative overflow-hidden"
       style={{
         background:
           "linear-gradient(180deg, var(--cream) 0%, rgba(11,110,79,0.04) 50%, var(--cream) 100%)",
@@ -79,12 +79,12 @@ export default function Values() {
           subtitle="Five foundational principles guide every engagement, decision, and solution we deliver — forming the unbreakable code of Green Knights."
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {values.slice(0, 3).map((value, i) => (
             <ValueCard key={value.title} value={value} index={i} inView={inView} />
           ))}
         </div>
-        <div className="grid sm:grid-cols-2 gap-6 mt-6 max-w-2xl mx-auto lg:max-w-none lg:grid-cols-2 lg:px-48">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 mt-5 sm:mt-6 max-w-2xl mx-auto lg:max-w-none lg:grid-cols-2 lg:px-48">
           {values.slice(3).map((value, i) => (
             <ValueCard key={value.title} value={value} index={i + 3} inView={inView} />
           ))}
@@ -108,7 +108,7 @@ function ValueCard({
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-      className="group relative rounded-3xl p-8 overflow-hidden transition-all duration-400 cursor-default"
+      className="group relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 overflow-hidden transition-all duration-400 cursor-default"
       style={{
         background: "var(--glass-bg)",
         backdropFilter: "blur(16px)",
@@ -130,7 +130,7 @@ function ValueCard({
       {/* Icon */}
       <div className="relative z-10">
         <motion.div
-          className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300"
           style={{ background: value.gradient, color: value.color }}
           whileHover={{ scale: 1.1, rotate: 5 }}
         >
@@ -138,7 +138,7 @@ function ValueCard({
         </motion.div>
 
         <h3
-          className="text-xl sm:text-2xl lg:text-[26px] font-bold mb-3"
+          className="text-lg sm:text-2xl lg:text-[26px] font-bold mb-2.5 sm:mb-3"
           style={{
             color: "var(--text)",
             fontFamily: "'Playfair Display', serif",
@@ -147,7 +147,7 @@ function ValueCard({
           {value.title}
         </h3>
         <p
-          className="text-[16px] sm:text-[17px] leading-[1.75]"
+          className="text-[15px] sm:text-[17px] leading-[1.75]"
           style={{ color: "var(--text-muted)" }}
         >
           {value.description}

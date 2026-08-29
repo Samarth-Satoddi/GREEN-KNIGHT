@@ -157,13 +157,13 @@ export default function EnquiryDetailManager({
         {/* Left 2 Cols: Customer & Message Info */}
         <div className="lg:col-span-2 space-y-6">
           {/* Customer Card */}
-          <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8">
-            <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-8">
+            <h2 className="text-base sm:text-lg font-bold text-white mb-5 sm:mb-6 flex items-center gap-2">
               <Shield size={18} className="text-emerald-400" />
               <span>Contact Information</span>
             </h2>
 
-            <div className="grid sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
                   Full Name
@@ -177,12 +177,12 @@ export default function EnquiryDetailManager({
                 <label className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
                   Email Address
                 </label>
-                <div className="text-base font-medium text-emerald-400">
+                <div className="text-base font-medium text-emerald-400 break-words">
                   <a
                     href={`mailto:${enquiry.email}?subject=Green%20Knights%20Follow-up`}
                     className="hover:underline flex items-center gap-1.5"
                   >
-                    <span>{enquiry.email}</span>
+                    <span className="truncate">{enquiry.email}</span>
                     <ExternalLink size={13} className="shrink-0 opacity-70" />
                   </a>
                 </div>
@@ -215,20 +215,20 @@ export default function EnquiryDetailManager({
           </div>
 
           {/* Message Card */}
-          <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8">
+          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-8">
             <label className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-3">
               Client Message
             </label>
-            <div className="bg-slate-950/80 border border-slate-800/80 rounded-2xl p-5 text-slate-200 text-sm sm:text-base leading-relaxed whitespace-pre-wrap font-sans">
+            <div className="bg-slate-950/80 border border-slate-800/80 rounded-2xl p-4 sm:p-5 text-slate-200 text-sm sm:text-base leading-relaxed whitespace-pre-wrap font-sans">
               {enquiry.message}
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
               <a
                 href={`mailto:${enquiry.email}?subject=Regarding%20Your%20Inquiry%20with%20Green%20Knights&body=Hi%20${encodeURIComponent(
                   enquiry.full_name
                 )},%0D%0A%0D%0AThank%20you%20for%20contacting%20Green%20Knights.%0D%0A%0D%0A`}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold shadow-md transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold shadow-md transition-colors w-full sm:w-auto"
               >
                 <Mail size={16} />
                 <span>Reply to Client</span>
@@ -237,7 +237,7 @@ export default function EnquiryDetailManager({
               <button
                 onClick={handleDelete}
                 disabled={deleting}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 text-xs sm:text-sm font-semibold transition-colors disabled:opacity-50"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 text-xs sm:text-sm font-semibold transition-colors disabled:opacity-50 w-full sm:w-auto"
               >
                 <Trash2 size={15} />
                 <span>{deleting ? "Deleting..." : "Delete Enquiry"}</span>
@@ -249,7 +249,7 @@ export default function EnquiryDetailManager({
         {/* Right 1 Col: Status Updater & Audit History */}
         <div className="space-y-6">
           {/* Status Control Card */}
-          <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6">
+          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-6">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
               Enquiry Status
             </h3>

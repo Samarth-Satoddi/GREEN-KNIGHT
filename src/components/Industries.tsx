@@ -115,14 +115,14 @@ export default function Industries() {
           subtitle="Green Knights delivers tailored AI, cloud, and security architectures engineered specifically for the complex regulations and operational workflows of ten key global industries."
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {industries.map((ind, i) => (
             <motion.div
               key={ind.title}
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: (i % 6) * 0.08 }}
-              className="group relative rounded-3xl p-8 overflow-hidden cursor-default flex flex-col justify-between"
+              className="group relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 overflow-hidden cursor-default flex flex-col justify-between"
               style={{
                 background: "var(--glass-bg)",
                 backdropFilter: "blur(16px)",
@@ -146,7 +146,7 @@ export default function Industries() {
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-4">
                   <motion.div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xs"
+                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shadow-xs"
                     style={{
                       background: `${ind.color}15`,
                       color: ind.color,
@@ -156,7 +156,7 @@ export default function Industries() {
                     {ind.icon}
                   </motion.div>
                   <span
-                    className="text-[13px] font-bold px-3 py-1 rounded-full shadow-xs"
+                    className="text-[12px] sm:text-[13px] font-bold px-2.5 sm:px-3 py-1 rounded-full shadow-xs"
                     style={{
                       background: `${ind.color}15`,
                       color: ind.color,
@@ -167,7 +167,7 @@ export default function Industries() {
                 </div>
 
                 <h3
-                  className="text-xl sm:text-2xl font-bold mb-3 group-hover:text-[#0B6E4F] transition-colors"
+                  className="text-lg sm:text-2xl font-bold mb-2.5 sm:mb-3 group-hover:text-[#0B6E4F] transition-colors"
                   style={{
                     color: "var(--text)",
                     fontFamily: "'Playfair Display', serif",
@@ -176,7 +176,7 @@ export default function Industries() {
                   {ind.title}
                 </h3>
                 <p
-                  className="text-[16px] sm:text-[17px] leading-[1.7]"
+                  className="text-[15px] sm:text-[17px] leading-[1.7]"
                   style={{ color: "var(--text-muted)" }}
                 >
                   {ind.description}

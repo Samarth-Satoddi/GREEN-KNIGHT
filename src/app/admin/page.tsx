@@ -122,15 +122,15 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* Metrics Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
         {/* Total */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between">
           <div className="flex items-center justify-between text-slate-400 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Total</span>
             <Inbox size={18} className="text-slate-400" />
           </div>
           <div>
-            <span className="text-2xl sm:text-3xl font-extrabold text-white">
+            <span className="text-xl sm:text-3xl font-extrabold text-white">
               {totalCount}
             </span>
             <p className="text-[11px] text-slate-500 mt-0.5">All Submissions</p>
@@ -138,31 +138,27 @@ export default async function AdminDashboardPage() {
         </div>
 
         {/* New */}
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 sm:p-5 flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-16 h-16 bg-amber-500/10 rounded-full blur-xl pointer-events-none" />
+        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between">
           <div className="flex items-center justify-between text-amber-400 mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
-              <Sparkles size={13} />
-              New
-            </span>
+            <span className="text-xs font-bold uppercase tracking-wider">New</span>
             <Clock size={18} className="text-amber-400" />
           </div>
           <div>
-            <span className="text-2xl sm:text-3xl font-extrabold text-amber-400">
+            <span className="text-xl sm:text-3xl font-extrabold text-amber-400">
               {newCount}
             </span>
-            <p className="text-[11px] text-amber-300/70 mt-0.5">Pending Action</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">Awaiting Action</p>
           </div>
         </div>
 
         {/* Contacted */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between">
           <div className="flex items-center justify-between text-sky-400 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Contacted</span>
             <MessageSquare size={18} className="text-sky-400" />
           </div>
           <div>
-            <span className="text-2xl sm:text-3xl font-extrabold text-white">
+            <span className="text-xl sm:text-3xl font-extrabold text-sky-400">
               {contactedCount}
             </span>
             <p className="text-[11px] text-slate-500 mt-0.5">Initial Outreach</p>
@@ -170,41 +166,41 @@ export default async function AdminDashboardPage() {
         </div>
 
         {/* In Progress */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between">
           <div className="flex items-center justify-between text-indigo-400 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">In Progress</span>
-            <Clock size={18} className="text-indigo-400" />
+            <TrendingUp size={18} className="text-indigo-400" />
           </div>
           <div>
-            <span className="text-2xl sm:text-3xl font-extrabold text-white">
+            <span className="text-xl sm:text-3xl font-extrabold text-indigo-400">
               {inProgressCount}
             </span>
-            <p className="text-[11px] text-slate-500 mt-0.5">Under Discussion</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">Active Scope</p>
           </div>
         </div>
 
         {/* Converted */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between">
           <div className="flex items-center justify-between text-emerald-400 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Converted</span>
-            <TrendingUp size={18} className="text-emerald-400" />
+            <Sparkles size={18} className="text-emerald-400" />
           </div>
           <div>
-            <span className="text-2xl sm:text-3xl font-extrabold text-emerald-400">
+            <span className="text-xl sm:text-3xl font-extrabold text-emerald-400">
               {convertedCount}
             </span>
-            <p className="text-[11px] text-slate-500 mt-0.5">Clients Won</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">Client Engaged</p>
           </div>
         </div>
 
         {/* Closed */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 sm:p-5 flex flex-col justify-between">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Closed</span>
             <CheckCircle2 size={18} className="text-slate-500" />
           </div>
           <div>
-            <span className="text-2xl sm:text-3xl font-extrabold text-slate-400">
+            <span className="text-xl sm:text-3xl font-extrabold text-slate-400">
               {closedCount}
             </span>
             <p className="text-[11px] text-slate-500 mt-0.5">Archived</p>
@@ -213,7 +209,7 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* Recent Enquiries Section */}
-      <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8">
+      <div className="bg-slate-900/80 border border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-8">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-lg sm:text-xl font-bold text-white">Recent Enquiries</h2>

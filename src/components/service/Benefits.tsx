@@ -30,11 +30,11 @@ export default function Benefits({ service }: BenefitsProps) {
         </h2>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
         {service.benefits.map((benefit, i) => (
           <div
             key={i}
-            className="p-7 sm:p-8 rounded-2xl flex flex-col justify-between"
+            className="p-5 sm:p-8 rounded-2xl flex flex-col justify-between"
             style={{
               background: "var(--glass-bg)",
               border: "1px solid var(--glass-border)",
@@ -42,22 +42,22 @@ export default function Benefits({ service }: BenefitsProps) {
             }}
           >
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="inline-flex items-center gap-1.5 text-[13px] font-bold px-3.5 py-1 rounded-full" style={{ background: `${service.color}15`, color: service.color }}>
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span className="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] font-bold px-3 py-1 rounded-full" style={{ background: `${service.color}15`, color: service.color }}>
                   {getCategoryIcon(benefit.category)}
                   {benefit.category}
                 </span>
 
-                <span className="text-[14px] sm:text-[15px] font-extrabold px-3.5 py-1 rounded-lg" style={{ background: "rgba(201,162,39,0.18)", color: "#C9A227" }}>
+                <span className="text-[13px] sm:text-[15px] font-extrabold px-3 py-1 rounded-lg" style={{ background: "rgba(201,162,39,0.18)", color: "#C9A227" }}>
                   {benefit.metric}
                 </span>
               </div>
 
-              <h3 className="font-bold text-xl sm:text-2xl mb-3" style={{ color: "var(--text)" }}>
+              <h3 className="font-bold text-lg sm:text-2xl mb-2 sm:mb-3" style={{ color: "var(--text)" }}>
                 {benefit.title}
               </h3>
 
-              <p className="text-[16px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
+              <p className="text-[14.5px] sm:text-[16px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
                 {benefit.description}
               </p>
             </div>

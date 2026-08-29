@@ -97,14 +97,14 @@ export default function ServicesLandingPage() {
             </div>
 
             {/* Category Filter Buttons */}
-            <div className="flex items-center justify-center flex-wrap gap-2.5 mt-7">
+            <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-2.5 mt-5 sm:mt-7">
               {categories.map((cat) => {
                 const isActive = activeCategory === cat;
                 return (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-4.5 py-2.5 rounded-xl text-[15px] font-bold transition-all cursor-pointer ${
+                    className={`px-3.5 py-2 sm:px-4.5 sm:py-2.5 rounded-xl text-[13px] sm:text-[15px] font-bold transition-all cursor-pointer ${
                       isActive
                         ? "bg-[#0B6E4F] text-white shadow-md"
                         : "bg-white/80 dark:bg-emerald-950/60 text-gray-700 dark:text-slate-200 hover:bg-[#0B6E4F]10 hover:text-[#0B6E4F] border border-black/5 dark:border-emerald-800/40"
@@ -118,7 +118,7 @@ export default function ServicesLandingPage() {
           </div>
 
           {/* 8 Premium Service Cards Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-16 sm:mb-20">
             <AnimatePresence>
               {filteredServices.map((svc, i) => (
                 <motion.div
@@ -144,17 +144,17 @@ export default function ServicesLandingPage() {
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <div
-                        className="w-13 h-13 rounded-xl flex items-center justify-center"
+                        className="w-12 h-12 sm:w-13 sm:h-13 rounded-xl flex items-center justify-center"
                         style={{
                           background: `${svc.color}15`,
                           color: svc.color,
                         }}
                       >
-                        {iconMap[svc.slug] || <Sparkles size={26} />}
+                        {iconMap[svc.slug] || <Sparkles size={24} />}
                       </div>
 
                       <span
-                        className="text-[13px] font-bold px-3 py-1 rounded-full"
+                        className="text-[12px] sm:text-[13px] font-bold px-2.5 sm:px-3 py-1 rounded-full"
                         style={{
                           background: `${svc.color}15`,
                           color: svc.color,
@@ -165,14 +165,14 @@ export default function ServicesLandingPage() {
                     </div>
 
                     <h2
-                      className="font-bold text-xl sm:text-[22px] mb-3 group-hover:text-[#0B6E4F] transition-colors"
+                      className="font-bold text-lg sm:text-[22px] mb-2.5 sm:mb-3 group-hover:text-[#0B6E4F] transition-colors"
                       style={{ color: "var(--text)" }}
                     >
                       {svc.title}
                     </h2>
 
                     <p
-                      className="text-[16px] leading-[1.7] mb-4 text-[var(--text-muted)] line-clamp-3"
+                      className="text-[14.5px] sm:text-[16px] leading-[1.7] mb-4 text-[var(--text-muted)] line-clamp-3"
                     >
                       {svc.tagline}
                     </p>
@@ -181,7 +181,7 @@ export default function ServicesLandingPage() {
                       {svc.technologies.slice(0, 3).map((t, idx) => (
                         <span
                           key={idx}
-                          className="text-[13px] px-2.5 py-1 rounded-md bg-black/5 dark:bg-emerald-950/60 text-gray-700 dark:text-slate-300 font-semibold"
+                          className="text-[12px] sm:text-[13px] px-2.5 py-1 rounded-md bg-black/5 dark:bg-emerald-950/60 text-gray-700 dark:text-slate-300 font-semibold"
                         >
                           {t.name}
                         </span>
@@ -191,7 +191,7 @@ export default function ServicesLandingPage() {
 
                   <Link
                     href={`/services/${svc.slug}`}
-                    className="w-full py-3.5 rounded-xl text-[16px] font-bold text-white flex items-center justify-center gap-2 transition-all shadow-md group-hover:shadow-lg"
+                    className="w-full py-3.5 rounded-xl text-[15px] sm:text-[16px] font-bold text-white flex items-center justify-center gap-2 transition-all shadow-md group-hover:shadow-lg"
                     style={{
                       background: "linear-gradient(135deg, #0B6E4F 0%, #145A32 100%)",
                     }}
@@ -212,7 +212,7 @@ export default function ServicesLandingPage() {
 
           {/* Why Green Knights Feature Section */}
           <div
-            className="rounded-3xl p-8 sm:p-12 mb-16 text-white"
+            className="rounded-2xl sm:rounded-3xl p-6 sm:p-12 mb-16 text-white"
             style={{
               background: "linear-gradient(135deg, #0a1f15 0%, #0d2818 50%, #0a1f15 100%)",
               border: "1px solid rgba(201,162,39,0.35)",

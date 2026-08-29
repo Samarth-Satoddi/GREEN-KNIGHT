@@ -20,7 +20,7 @@ export default function ServiceFeatures({ service }: ServiceFeaturesProps) {
         </h2>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {service.features.map((feature, i) => {
           // Dynamic Lucide icon lookup fallback
           const iconMap = LucideIcons as unknown as Record<string, React.ComponentType<{ size?: number; className?: string }>>;
@@ -31,7 +31,7 @@ export default function ServiceFeatures({ service }: ServiceFeaturesProps) {
               key={i}
               whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(11,110,79,0.12)" }}
               transition={{ duration: 0.2 }}
-              className="p-7 sm:p-8 rounded-2xl relative overflow-hidden group flex flex-col justify-between"
+              className="p-5 sm:p-8 rounded-2xl relative overflow-hidden group flex flex-col justify-between"
               style={{
                 background: "var(--glass-bg)",
                 border: "1px solid var(--glass-border)",
@@ -40,20 +40,20 @@ export default function ServiceFeatures({ service }: ServiceFeaturesProps) {
             >
               <div>
                 <div
-                  className="w-13 h-13 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+                  className="w-12 h-12 sm:w-13 sm:h-13 rounded-xl flex items-center justify-center mb-4 sm:mb-5 transition-transform duration-300 group-hover:scale-110"
                   style={{
                     background: `${service.color}15`,
                     color: service.color,
                   }}
                 >
-                  <IconComponent size={26} />
+                  <IconComponent size={24} />
                 </div>
 
-                <h3 className="font-bold text-xl sm:text-2xl mb-3" style={{ color: "var(--text)" }}>
+                <h3 className="font-bold text-lg sm:text-2xl mb-2 sm:mb-3" style={{ color: "var(--text)" }}>
                   {feature.title}
                 </h3>
 
-                <p className="text-[16px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
+                <p className="text-[14.5px] sm:text-[16px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
                   {feature.description}
                 </p>
               </div>

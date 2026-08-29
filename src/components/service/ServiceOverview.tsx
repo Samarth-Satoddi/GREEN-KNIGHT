@@ -17,39 +17,39 @@ export default function ServiceOverview({ service }: ServiceOverviewProps) {
         </h2>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {/* Main Detailed Explanation */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="p-7 sm:p-9 rounded-2xl" style={{ background: "var(--glass-bg)", border: "1px solid var(--glass-border)" }}>
-            <h3 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: "#0B6E4F" }}>Executive Summary</h3>
-            <p className="text-[17px] sm:text-[18px] leading-[1.7] font-medium" style={{ color: "var(--text)" }}>
+        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+          <div className="p-5 sm:p-8 lg:p-9 rounded-2xl" style={{ background: "var(--glass-bg)", border: "1px solid var(--glass-border)" }}>
+            <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-3" style={{ color: "#0B6E4F" }}>Executive Summary</h3>
+            <p className="text-[15px] sm:text-[18px] leading-[1.7] font-medium" style={{ color: "var(--text)" }}>
               {service.overview.summary}
             </p>
           </div>
 
-          <div className="p-7 sm:p-9 rounded-2xl" style={{ background: "var(--glass-bg)", border: "1px solid var(--glass-border)" }}>
-            <h3 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: "#0B6E4F" }}>Deep-Dive Analysis</h3>
-            <p className="text-[16px] sm:text-[17px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
+          <div className="p-5 sm:p-8 lg:p-9 rounded-2xl" style={{ background: "var(--glass-bg)", border: "1px solid var(--glass-border)" }}>
+            <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-3" style={{ color: "#0B6E4F" }}>Deep-Dive Analysis</h3>
+            <p className="text-[14.5px] sm:text-[17px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
               {service.overview.detailedExplanation}
             </p>
           </div>
 
           {/* Target Architecture Overview */}
-          <div className="p-7 sm:p-9 rounded-2xl" style={{ background: "linear-gradient(135deg, rgba(11,110,79,0.05), rgba(201,162,39,0.05))", border: "1px dashed rgba(11,110,79,0.25)" }}>
-            <div className="flex items-center gap-2.5 mb-3">
-              <Layers size={22} className="text-[#0B6E4F]" />
-              <h3 className="text-xl sm:text-2xl font-bold" style={{ color: "var(--text)" }}>Architectural Design Topology</h3>
+          <div className="p-5 sm:p-8 lg:p-9 rounded-2xl" style={{ background: "linear-gradient(135deg, rgba(11,110,79,0.05), rgba(201,162,39,0.05))", border: "1px dashed rgba(11,110,79,0.25)" }}>
+            <div className="flex items-center gap-2.5 mb-2 sm:mb-3">
+              <Layers size={20} className="text-[#0B6E4F]" />
+              <h3 className="text-lg sm:text-2xl font-bold" style={{ color: "var(--text)" }}>Architectural Design Topology</h3>
             </div>
-            <p className="text-[16px] sm:text-[17px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
+            <p className="text-[14.5px] sm:text-[17px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
               {service.overview.architectureOverview}
             </p>
           </div>
         </div>
 
         {/* Problems Solved Sidebar Card */}
-        <div className="p-7 sm:p-9 rounded-2xl h-fit" style={{ background: "linear-gradient(135deg, #0a1f15 0%, #0d2818 100%)", color: "white" }}>
-          <h3 className="text-xl sm:text-2xl font-bold mb-5 flex items-center gap-2.5" style={{ color: "#C9A227" }}>
-            <ShieldCheck size={22} />
+        <div className="p-5 sm:p-8 lg:p-9 rounded-2xl h-fit" style={{ background: "linear-gradient(135deg, #0a1f15 0%, #0d2818 100%)", color: "white" }}>
+          <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-5 flex items-center gap-2.5" style={{ color: "#C9A227" }}>
+            <ShieldCheck size={20} />
             Business Friction Solved
           </h3>
 

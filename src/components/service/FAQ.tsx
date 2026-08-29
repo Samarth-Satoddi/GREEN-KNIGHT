@@ -62,12 +62,12 @@ export default function FAQ({ service }: FAQProps) {
             >
               <button
                 onClick={() => toggle(i)}
-                className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 cursor-pointer"
+                className="w-full text-left p-4 sm:p-7 flex items-center justify-between gap-3 sm:gap-4 cursor-pointer"
                 style={{ background: "transparent", border: "none" }}
               >
-                <span className="font-bold text-[17px] sm:text-[18px] flex items-center gap-3.5" style={{ color: "var(--text)" }}>
-                  <HelpCircle size={22} className="text-[#0B6E4F] flex-shrink-0" />
-                  {faq.question}
+                <span className="font-bold text-[15px] sm:text-[18px] flex items-center gap-2.5 sm:gap-3.5" style={{ color: "var(--text)" }}>
+                  <HelpCircle size={20} className="text-[#0B6E4F] flex-shrink-0" />
+                  <span>{faq.question}</span>
                 </span>
 
                 <motion.div
@@ -75,7 +75,7 @@ export default function FAQ({ service }: FAQProps) {
                   transition={{ duration: 0.2 }}
                   className="flex-shrink-0 text-[#0B6E4F]"
                 >
-                  <ChevronDown size={22} />
+                  <ChevronDown size={20} />
                 </motion.div>
               </button>
 
@@ -87,7 +87,7 @@ export default function FAQ({ service }: FAQProps) {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-7 pb-7 text-[16px] leading-[1.7] border-t border-black/5 pt-4" style={{ color: "var(--text-muted)" }}>
+                    <div className="px-5 sm:px-7 pb-5 sm:pb-7 text-[14.5px] sm:text-[16px] leading-[1.7] border-t border-black/5 dark:border-white/5 pt-3.5 sm:pt-4" style={{ color: "var(--text-muted)" }}>
                       {faq.answer}
                     </div>
                   </motion.div>
