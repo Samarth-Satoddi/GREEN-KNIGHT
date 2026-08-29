@@ -3,7 +3,6 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import ScrollProgress from "@/components/ScrollProgress";
-import CursorGlow from "@/components/CursorGlow";
 
 export default function ServiceLayout({
   children,
@@ -13,7 +12,6 @@ export default function ServiceLayout({
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--cream)" }}>
       <ScrollProgress />
-      <CursorGlow />
       <Navbar />
 
       <main className="flex-grow pt-24 pb-16">

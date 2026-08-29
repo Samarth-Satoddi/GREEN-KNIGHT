@@ -82,6 +82,8 @@ export const metadata: Metadata = {
   },
 };
 
+import CursorGlow from "@/components/CursorGlow";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -102,7 +104,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased overflow-x-hidden">{children}</body>
+      <body className="antialiased overflow-x-hidden">
+        <CursorGlow />
+        {children}
+      </body>
     </html>
   );
 }

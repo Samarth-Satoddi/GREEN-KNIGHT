@@ -130,9 +130,9 @@ export default function Services() {
                 href={`/services/${svc.slug}`}
                 className="group block relative rounded-2xl p-7 sm:p-8 overflow-hidden h-full flex flex-col justify-between cursor-pointer"
                 style={{
-                  background: "rgba(255,255,255,0.85)",
+                  background: "var(--glass-bg)",
                   backdropFilter: "blur(12px)",
-                  border: "1px solid rgba(11,110,79,0.16)",
+                  border: "1px solid var(--glass-border)",
                   transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
               >
@@ -177,12 +177,13 @@ export default function Services() {
 
                   <h3
                     className="font-bold text-xl sm:text-[24px] mb-3 leading-snug group-hover:text-[#0B6E4F] transition-colors"
-                    style={{ color: "#111827" }}
+                    style={{ color: "var(--text)" }}
                   >
                     {svc.title}
                   </h3>
                   <p
-                    className="text-[16px] sm:text-[17px] leading-[1.75] mb-6 text-gray-700 font-normal"
+                    className="text-[16px] sm:text-[17px] leading-[1.75] mb-6 font-normal"
+                    style={{ color: "var(--text-muted)" }}
                   >
                     {svc.description}
                   </p>

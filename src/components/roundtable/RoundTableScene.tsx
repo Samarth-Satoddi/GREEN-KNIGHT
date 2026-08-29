@@ -36,7 +36,7 @@ const DURATION_MS = 25_000; // 25 seconds per full 360° revolution
 const CENTER_X = 50; // %
 const CENTER_Y = 52; // %
 
-// Perspective Ellipse radii for hotspot orbit
+// Perspective Ellipse radii matching the 3D table surface angle
 const RADIUS_X = 20.5; // % of container width
 const RADIUS_Y = 16.0; // % of container height
 

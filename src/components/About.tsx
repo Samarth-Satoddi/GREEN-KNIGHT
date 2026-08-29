@@ -126,21 +126,20 @@ export default function About() {
                 <h3
                   className="text-[28px] sm:text-[36px] lg:text-[46px] font-extrabold mb-4 sm:mb-6 leading-tight"
                   style={{
-                    color: "#111827",
+                    color: "var(--text)",
                     fontFamily: "'Playfair Display', serif",
                   }}
                 >
                   Digital Knights of the Round Table
                 </h3>
                 <p
-                  className="text-[17px] sm:text-[18px] lg:text-[19px] leading-[1.65] mb-4 sm:mb-6 font-bold max-w-[780px]"
-                  style={{ color: "#0A251B" }}
+                  className="text-[17px] sm:text-[18px] lg:text-[19px] leading-[1.65] mb-4 sm:mb-6 font-bold max-w-[780px] text-emerald-900 dark:text-emerald-300"
                 >
                   Technology requires more than tools. It requires strategy, collaboration, responsibility and disciplined execution.
                 </p>
                 <p
                   className="text-[16px] sm:text-[17px] lg:text-[18px] leading-[1.65] mb-6 sm:mb-8 max-w-[780px]"
-                  style={{ color: "#374151" }}
+                  style={{ color: "var(--text-muted)" }}
                 >
                   Green Knights of Tech &amp; AI operates like a modern round table — each partner bringing specialized technical authority, collaborating with absolute transparency, and guarding enterprise interests across AI, Cloud, Cybersecurity, and Digital Transformation.
                 </p>
@@ -204,13 +203,13 @@ export default function About() {
                 </div>
                 <h4
                   className="font-bold text-xl sm:text-2xl mb-4"
-                  style={{ color: "#111827" }}
+                  style={{ color: "var(--text)" }}
                 >
                   {pillar.title}
                 </h4>
                 <p
                   className="text-[16px] sm:text-[17px] leading-[1.75]"
-                  style={{ color: "#374151" }}
+                  style={{ color: "var(--text-muted)" }}
                 >
                   {pillar.text}
                 </p>

@@ -71,7 +71,7 @@ export default function Hero() {
       onMouseMove={handleMouseMove}
       className="relative w-full pt-[110px] sm:pt-[120px] lg:pt-[130px] pb-12 sm:pb-16 noise-overlay flex flex-col justify-center items-center overflow-hidden min-h-[85vh] text-center"
       style={{
-        background: "linear-gradient(155deg, #FFF8DC 0%, #FAF6DC 40%, #F5F0D2 100%)",
+        background: "var(--cream)",
       }}
     >
       {/* ── Layered Background: mesh grid, watermark & ambient glowing lighting ── */}
@@ -175,7 +175,7 @@ export default function Hero() {
             className="text-[32px] sm:text-[44px] md:text-[54px] lg:text-[64px] xl:text-[70px] font-extrabold tracking-tight mb-5 leading-[1.08]"
             style={{
               fontFamily: "'Playfair Display', serif",
-              color: "#111827",
+              color: "var(--text)",
               letterSpacing: "-0.025em",
             }}
           >
@@ -201,7 +201,7 @@ export default function Hero() {
           <motion.p
             variants={fadeUp}
             className="mb-7 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.65] max-w-[700px] mx-auto font-medium"
-            style={{ color: "#1F2937" }}
+            style={{ color: "var(--text-muted)" }}
           >
             <strong style={{ color: "#0B6E4F", fontWeight: 700 }}>GREEN KNIGHTS OF TECH &amp; AI</strong> helps
             enterprises transform with AI, cloud, cybersecurity, automation, and next-generation
@@ -241,8 +241,8 @@ export default function Hero() {
               whileTap={{ scale: 0.98 }}
               className="flex items-center justify-center gap-2.5 font-bold px-8 py-3.5 sm:px-9 sm:py-4 w-full sm:w-auto cursor-pointer"
               style={{
-                background: "rgba(255, 255, 255, 0.92)",
-                color: "#111827",
+                background: "var(--glass-bg)",
+                color: "var(--text)",
                 borderRadius: "14px",
                 border: "1.5px solid rgba(11,110,79,0.28)",
                 fontSize: "1rem",
@@ -260,7 +260,7 @@ export default function Hero() {
           <motion.div
             variants={fadeUp}
             className="flex flex-col sm:flex-row items-center justify-center gap-y-2 gap-x-7 text-[13.5px] sm:text-[15px] font-bold"
-            style={{ color: "#1F2937" }}
+            style={{ color: "var(--text-muted)" }}
           >
             {trustBadges.map((badge) => (
               <span key={badge} className="flex items-center gap-2">
@@ -291,10 +291,10 @@ export default function Hero() {
                 whileHover={{ y: -6, boxShadow: "0 22px 45px rgba(11,110,79,0.16)" }}
                 className="flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-[20px]"
                 style={{
-                  background: "rgba(255, 255, 255, 0.88)",
+                  background: "var(--glass-bg)",
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
-                  border: "1px solid rgba(11, 110, 79, 0.18)",
+                  border: "1px solid var(--glass-border)",
                   boxShadow: "0 10px 30px rgba(11, 110, 79, 0.06)",
                   transition: "transform 0.25s, box-shadow 0.25s",
                 }}
@@ -317,7 +317,7 @@ export default function Hero() {
                   >
                     {stat.value}
                   </p>
-                  <p className="text-[11px] sm:text-[12px] font-bold text-[#374151] uppercase tracking-wider leading-none truncate">
+                  <p className="text-[11px] sm:text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider leading-none truncate">
                     {stat.label}
                   </p>
                 </div>
@@ -340,7 +340,7 @@ export default function Hero() {
             aria-label="Scroll to explore"
           >
             <span
-              className="text-[12px] font-bold tracking-[0.14em] uppercase text-[#4B5563] group-hover:text-[#0B6E4F] transition-colors"
+              className="text-[12px] font-bold tracking-[0.14em] uppercase text-[var(--text-muted)] group-hover:text-[#0B6E4F] transition-colors"
             >
               Scroll to explore
             </span>

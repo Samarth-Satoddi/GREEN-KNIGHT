@@ -41,8 +41,8 @@ export default function ProcessTimeline({ service }: ProcessTimelineProps) {
             <div
               className="p-7 sm:p-8 rounded-2xl"
               style={{
-                background: "rgba(255,255,255,0.78)",
-                border: "1px solid rgba(11,110,79,0.14)",
+                background: "var(--glass-bg)",
+                border: "1px solid var(--glass-border)",
               }}
             >
               <div className="flex flex-wrap items-center justify-between gap-2.5 mb-3.5">
@@ -55,7 +55,7 @@ export default function ProcessTimeline({ service }: ProcessTimelineProps) {
                   </h3>
                 </div>
 
-                <span className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-gray-600">
+                <span className="inline-flex items-center gap-1.5 text-[14px] font-semibold" style={{ color: "var(--text-muted)" }}>
                   <Clock size={15} />
                   {step.duration}
                 </span>

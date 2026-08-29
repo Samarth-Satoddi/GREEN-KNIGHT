@@ -33,8 +33,8 @@ export default function ServiceFeatures({ service }: ServiceFeaturesProps) {
               transition={{ duration: 0.2 }}
               className="p-7 sm:p-8 rounded-2xl relative overflow-hidden group flex flex-col justify-between"
               style={{
-                background: "rgba(255,255,255,0.78)",
-                border: "1px solid rgba(11,110,79,0.14)",
+                background: "var(--glass-bg)",
+                border: "1px solid var(--glass-border)",
                 backdropFilter: "blur(10px)",
               }}
             >

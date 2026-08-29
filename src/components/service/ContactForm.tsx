@@ -31,9 +31,9 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
     width: "100%",
     padding: "0.875rem 1.125rem",
     borderRadius: "0.75rem",
-    border: "1px solid rgba(11,110,79,0.22)",
-    background: "rgba(255,255,255,0.92)",
-    color: "#111827",
+    border: "1px solid var(--glass-border)",
+    background: "var(--glass-bg)",
+    color: "var(--text)",
     fontSize: "1.0625rem", /* 17px */
     lineHeight: "1.5",
     outline: "none",
@@ -46,8 +46,8 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
       <div
         className="rounded-3xl p-8 sm:p-12 relative overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, rgba(11,110,79,0.06) 0%, rgba(201,162,39,0.08) 100%)",
-          border: "1px solid rgba(11,110,79,0.2)",
+          background: "var(--glass-bg)",
+          border: "1px solid var(--glass-border)",
           boxShadow: "0 20px 50px rgba(11,110,79,0.08)",
         }}
       >
@@ -55,10 +55,10 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
           <span className="text-[13px] sm:text-[14px] font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-[#0B6E4F]15 text-[#0B6E4F] inline-block mb-4 shadow-xs">
             Book Enterprise Consultation
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold" style={{ color: "#111827", fontFamily: "'Playfair Display', serif" }}>
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold" style={{ color: "var(--text)", fontFamily: "'Playfair Display', serif" }}>
             Schedule Your Strategic Architecture Session
           </h2>
-          <p className="text-[16px] sm:text-[18px] mt-4 leading-[1.75] max-w-2xl mx-auto text-gray-700 font-medium">
+          <p className="text-[16px] sm:text-[18px] mt-4 leading-[1.75] max-w-2xl mx-auto font-medium" style={{ color: "var(--text-muted)" }}>
             Connect directly with senior enterprise architects and technology advisors to discuss your project requirements, scope, and timeline.
           </p>
         </div>
@@ -67,13 +67,13 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="p-8 sm:p-10 rounded-2xl text-center max-w-lg mx-auto bg-white/90 border border-[#0B6E4F]30 shadow-lg"
+            className="p-8 sm:p-10 rounded-2xl text-center max-w-lg mx-auto bg-[var(--glass-bg)] border border-[var(--glass-border)] shadow-lg"
           >
             <div className="w-16 h-16 rounded-full bg-[#0B6E4F] text-white flex items-center justify-center mx-auto mb-4">
               <CheckCircle2 size={36} />
             </div>
             <h3 className="text-2xl font-bold text-[#0B6E4F] mb-3">Consultation Request Received!</h3>
-            <p className="text-[16px] text-gray-700 leading-[1.75] mb-6">
+            <p className="text-[16px] leading-[1.75] mb-6" style={{ color: "var(--text-muted)" }}>
               Thank you, {formData.name}. A senior technical architect from Green Knights will review your project details and reach out via {formData.contactMethod.toLowerCase()} within 4 business hours.
             </p>
             <button
@@ -87,7 +87,7 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
           <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* Full Name */}
             <div>
-              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800">
+              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">
                 Full Name *
               </label>
               <input
@@ -102,7 +102,7 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
 
             {/* Company Name */}
             <div>
-              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800">
+              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">
                 Company / Organization *
               </label>
               <input
@@ -117,7 +117,7 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
 
             {/* Corporate Email */}
             <div>
-              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800">
+              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">
                 Corporate Email *
               </label>
               <input
@@ -132,7 +132,7 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
 
             {/* Phone Number */}
             <div>
-              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800">
+              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">
                 Direct Phone Number *
               </label>
               <input
@@ -147,7 +147,7 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
 
             {/* Industry */}
             <div>
-              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800">
+              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">
                 Industry Sector
               </label>
               <select
@@ -168,7 +168,7 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
 
             {/* Estimated Budget */}
             <div>
-              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800">
+              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">
                 Estimated Project Budget
               </label>
               <select
@@ -185,7 +185,7 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
 
             {/* Service Selected */}
             <div>
-              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800">
+              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">
                 Target Service Category
               </label>
               <input
@@ -198,7 +198,7 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
 
             {/* Preferred Contact Method */}
             <div>
-              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800">
+              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">
                 Preferred Contact Method
               </label>
               <select
@@ -214,7 +214,7 @@ export default function ContactForm({ serviceTitle }: ContactFormProps) {
 
             {/* Project Description */}
             <div className="sm:col-span-2">
-              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800">
+              <label className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100">
                 Project Overview &amp; Objectives *
               </label>
               <textarea

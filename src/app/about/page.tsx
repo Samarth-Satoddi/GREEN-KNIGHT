@@ -7,7 +7,6 @@ import TeamSection from "@/components/TeamSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import ScrollProgress from "@/components/ScrollProgress";
-import CursorGlow from "@/components/CursorGlow";
 
 export const metadata: Metadata = {
   title: "About Us | Green Knights of Tech & AI",
@@ -25,7 +24,6 @@ export default function AboutPage() {
   return (
     <>
       <ScrollProgress />
-      <CursorGlow />
       <Navbar />
 
       <main className="pt-20">

@@ -88,8 +88,8 @@ export default function Contact() {
     width: "100%",
     padding: "0.875rem 1.125rem",
     borderRadius: "0.75rem",
-    border: "1px solid rgba(11,110,79,0.22)",
-    background: "rgba(255,255,255,0.75)",
+    border: "1px solid var(--glass-border)",
+    background: "var(--glass-bg)",
     color: "var(--text)",
     fontSize: "1.0625rem",
     lineHeight: "1.5",
@@ -210,9 +210,9 @@ export default function Contact() {
             <div
               className="rounded-3xl p-8 sm:p-10"
               style={{
-                background: "rgba(255,255,255,0.78)",
+                background: "var(--glass-bg)",
                 backdropFilter: "blur(20px)",
-                border: "1px solid rgba(11,110,79,0.14)",
+                border: "1px solid var(--glass-border)",
                 boxShadow: "0 20px 50px rgba(11,110,79,0.08)",
               }}
             >
@@ -277,7 +277,7 @@ export default function Contact() {
                     <div>
                       <label
                         htmlFor="name"
-                        className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800"
+                        className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100"
                       >
                         Full Name *
                       </label>
@@ -303,7 +303,7 @@ export default function Contact() {
                     <div>
                       <label
                         htmlFor="email"
-                        className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800"
+                        className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100"
                       >
                         Email Address *
                       </label>
@@ -332,7 +332,7 @@ export default function Contact() {
                     <div>
                       <label
                         htmlFor="company"
-                        className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800"
+                        className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100"
                       >
                         Company
                       </label>
@@ -357,7 +357,7 @@ export default function Contact() {
                     <div>
                       <label
                         htmlFor="service"
-                        className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800"
+                        className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100"
                       >
                         Service Interest
                       </label>
@@ -376,15 +376,15 @@ export default function Contact() {
                           e.target.style.boxShadow = "none";
                         }}
                       >
-                        <option value="">Select a service</option>
-                        <option value="ai">AI Solutions</option>
-                        <option value="software">Software Development</option>
-                        <option value="cloud">Cloud Solutions</option>
-                        <option value="security">Cybersecurity</option>
-                        <option value="transformation">Digital Transformation</option>
-                        <option value="erp">ERP Solutions</option>
-                        <option value="consulting">IT Consulting</option>
-                        <option value="data">Data Analytics</option>
+                        <option value="" className="dark:bg-slate-900 dark:text-slate-100">Select a service</option>
+                        <option value="ai" className="dark:bg-slate-900 dark:text-slate-100">AI Solutions</option>
+                        <option value="software" className="dark:bg-slate-900 dark:text-slate-100">Software Development</option>
+                        <option value="cloud" className="dark:bg-slate-900 dark:text-slate-100">Cloud Solutions</option>
+                        <option value="security" className="dark:bg-slate-900 dark:text-slate-100">Cybersecurity</option>
+                        <option value="transformation" className="dark:bg-slate-900 dark:text-slate-100">Digital Transformation</option>
+                        <option value="erp" className="dark:bg-slate-900 dark:text-slate-100">ERP Solutions</option>
+                        <option value="consulting" className="dark:bg-slate-900 dark:text-slate-100">IT Consulting</option>
+                        <option value="data" className="dark:bg-slate-900 dark:text-slate-100">Data Analytics</option>
                       </select>
                     </div>
                   </div>
@@ -392,9 +392,9 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800"
+                      className="block text-[15px] sm:text-[16px] font-semibold mb-2 text-gray-800 dark:text-slate-100"
                     >
-                      Message *
+                      Project Details *
                     </label>
                     <textarea
                       id="message"

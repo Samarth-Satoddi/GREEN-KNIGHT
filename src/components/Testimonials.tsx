@@ -22,9 +22,9 @@ export default function Testimonials() {
         <div
           className="relative rounded-3xl p-8 sm:p-12 text-center"
           style={{
-            background: "rgba(255,255,255,0.78)",
+            background: "var(--glass-bg)",
             backdropFilter: "blur(20px)",
-            border: "1px solid rgba(11,110,79,0.16)",
+            border: "1px solid var(--glass-border)",
             boxShadow: "0 25px 60px rgba(11,110,79,0.08)",
           }}
         >

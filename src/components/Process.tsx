@@ -135,9 +135,9 @@ export default function Process() {
                     <div
                       className="group rounded-2xl p-8 cursor-default"
                       style={{
-                        background: "rgba(255,255,255,0.78)",
+                        background: "var(--glass-bg)",
                         backdropFilter: "blur(12px)",
-                        border: "1px solid rgba(11,110,79,0.14)",
+                        border: "1px solid var(--glass-border)",
                       }}
                     >
                       <div

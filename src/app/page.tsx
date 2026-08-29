@@ -1,6 +1,5 @@
 import LoadingScreen from "@/components/LoadingScreen";
 import ScrollProgress from "@/components/ScrollProgress";
-import CursorGlow from "@/components/CursorGlow";
 import BackToTop from "@/components/BackToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Navbar from "@/components/Navbar";
@@ -26,7 +25,6 @@ export default function Home() {
 
       {/* Global utilities */}
       <ScrollProgress />
-      <CursorGlow />
 
       {/* Navigation */}
       <Navbar />

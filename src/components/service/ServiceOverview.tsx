@@ -20,14 +20,14 @@ export default function ServiceOverview({ service }: ServiceOverviewProps) {
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Main Detailed Explanation */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="p-7 sm:p-9 rounded-2xl" style={{ background: "rgba(255,255,255,0.78)", border: "1px solid rgba(11,110,79,0.14)" }}>
+          <div className="p-7 sm:p-9 rounded-2xl" style={{ background: "var(--glass-bg)", border: "1px solid var(--glass-border)" }}>
             <h3 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: "#0B6E4F" }}>Executive Summary</h3>
             <p className="text-[17px] sm:text-[18px] leading-[1.7] font-medium" style={{ color: "var(--text)" }}>
               {service.overview.summary}
             </p>
           </div>
 
-          <div className="p-7 sm:p-9 rounded-2xl" style={{ background: "rgba(255,255,255,0.78)", border: "1px solid rgba(11,110,79,0.14)" }}>
+          <div className="p-7 sm:p-9 rounded-2xl" style={{ background: "var(--glass-bg)", border: "1px solid var(--glass-border)" }}>
             <h3 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: "#0B6E4F" }}>Deep-Dive Analysis</h3>
             <p className="text-[16px] sm:text-[17px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
               {service.overview.detailedExplanation}

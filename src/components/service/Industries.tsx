@@ -37,8 +37,8 @@ export default function Industries({ service }: IndustriesProps) {
             key={i}
             className="p-7 rounded-2xl flex flex-col justify-between"
             style={{
-              background: "rgba(255,255,255,0.85)",
-              border: "1px solid rgba(11,110,79,0.16)",
+              background: "var(--glass-bg)",
+              border: "1px solid var(--glass-border)",
             }}
           >
             <div>
@@ -51,17 +51,17 @@ export default function Industries({ service }: IndustriesProps) {
                 </div>
                 <div>
                   <span className="text-[13px] font-bold text-[#C9A227] uppercase tracking-wider block mb-0.5">{ind.industry}</span>
-                  <h3 className="font-bold text-lg sm:text-xl" style={{ color: "#111827" }}>{ind.title}</h3>
+                  <h3 className="font-bold text-lg sm:text-xl" style={{ color: "var(--text)" }}>{ind.title}</h3>
                 </div>
               </div>
 
-              <p className="text-[15px] sm:text-[16px] leading-[1.75] mb-5" style={{ color: "#374151" }}>
+              <p className="text-[15px] sm:text-[16px] leading-[1.75] mb-5" style={{ color: "var(--text-muted)" }}>
                 {ind.useCase}
               </p>
             </div>
 
             <div className="pt-4 border-t border-black/5 flex items-center justify-between">
-              <span className="text-[13px] font-bold text-gray-700">Empirical Result:</span>
+              <span className="text-[13px] font-bold text-[var(--text-muted)]">Empirical Result:</span>
               <span className="text-[13px] sm:text-[14px] font-extrabold px-3 py-1 rounded bg-[#0B6E4F]15 text-[#0B6E4F]">
                 {ind.impact}
               </span>

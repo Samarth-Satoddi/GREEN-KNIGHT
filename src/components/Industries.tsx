@@ -124,9 +124,9 @@ export default function Industries() {
               transition={{ duration: 0.5, delay: (i % 6) * 0.08 }}
               className="group relative rounded-3xl p-8 overflow-hidden cursor-default flex flex-col justify-between"
               style={{
-                background: "rgba(255,255,255,0.78)",
+                background: "var(--glass-bg)",
                 backdropFilter: "blur(16px)",
-                border: "1px solid rgba(11,110,79,0.14)",
+                border: "1px solid var(--glass-border)",
                 boxShadow: "0 10px 30px rgba(11,110,79,0.04)",
               }}
               whileHover={{

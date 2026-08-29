@@ -10,7 +10,6 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import ScrollProgress from "@/components/ScrollProgress";
-import CursorGlow from "@/components/CursorGlow";
 
 const categories = [
   "All",
@@ -52,7 +51,6 @@ export default function ServicesLandingPage() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--cream)" }}>
       <ScrollProgress />
-      <CursorGlow />
       <Navbar />
 
       <main className="flex-grow pt-32 pb-24">
@@ -91,8 +89,9 @@ export default function ServicesLandingPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-13 pr-4 py-4 rounded-2xl text-[16px] border shadow-xs focus:outline-none focus:ring-2 focus:ring-[#0B6E4F] transition-all"
                 style={{
-                  background: "rgba(255,255,255,0.92)",
-                  borderColor: "rgba(11,110,79,0.22)",
+                  background: "var(--glass-bg)",
+                  borderColor: "var(--glass-border)",
+                  color: "var(--text)",
                 }}
               />
             </div>
@@ -108,7 +107,7 @@ export default function ServicesLandingPage() {
                     className={`px-4.5 py-2.5 rounded-xl text-[15px] font-bold transition-all cursor-pointer ${
                       isActive
                         ? "bg-[#0B6E4F] text-white shadow-md"
-                        : "bg-white/80 text-gray-700 hover:bg-[#0B6E4F]10 hover:text-[#0B6E4F] border border-black/5"
+                        : "bg-white/80 dark:bg-emerald-950/60 text-gray-700 dark:text-slate-200 hover:bg-[#0B6E4F]10 hover:text-[#0B6E4F] border border-black/5 dark:border-emerald-800/40"
                     }`}
                   >
                     {cat}
@@ -131,9 +130,9 @@ export default function ServicesLandingPage() {
                   transition={{ duration: 0.3, delay: i * 0.05 }}
                   className="group relative rounded-2xl p-5 sm:p-7 lg:p-8 overflow-hidden flex flex-col justify-between"
                   style={{
-                    background: "rgba(255,255,255,0.78)",
+                    background: "var(--glass-bg)",
                     backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(11,110,79,0.14)",
+                    border: "1px solid var(--glass-border)",
                     boxShadow: "0 10px 30px rgba(11,110,79,0.04)",
                   }}
                   whileHover={{
@@ -173,7 +172,7 @@ export default function ServicesLandingPage() {
                     </h2>
 
                     <p
-                      className="text-[16px] leading-[1.7] mb-4 text-gray-600 line-clamp-3"
+                      className="text-[16px] leading-[1.7] mb-4 text-[var(--text-muted)] line-clamp-3"
                     >
                       {svc.tagline}
                     </p>
@@ -182,7 +181,7 @@ export default function ServicesLandingPage() {
                       {svc.technologies.slice(0, 3).map((t, idx) => (
                         <span
                           key={idx}
-                          className="text-[13px] px-2.5 py-1 rounded-md bg-black/5 text-gray-700 font-semibold"
+                          className="text-[13px] px-2.5 py-1 rounded-md bg-black/5 dark:bg-emerald-950/60 text-gray-700 dark:text-slate-300 font-semibold"
                         >
                           {t.name}
                         </span>

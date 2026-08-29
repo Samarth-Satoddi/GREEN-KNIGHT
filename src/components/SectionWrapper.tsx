@@ -114,7 +114,7 @@ export function SectionHeader({
       <h2
         className="text-[32px] sm:text-[40px] lg:text-[48px] font-extrabold leading-tight mb-4 sm:mb-5"
         style={{
-          color: "#111827",
+          color: "var(--text)",
           fontFamily: "'Playfair Display', serif",
           letterSpacing: "-0.02em",
         }}
@@ -136,7 +136,7 @@ export function SectionHeader({
       {subtitle && (
         <p
           className={`text-[16px] sm:text-[18px] lg:text-[19px] leading-[1.65] max-w-[760px] ${center ? "mx-auto" : ""}`}
-          style={{ color: "#374151" }}
+          style={{ color: "var(--text-muted)" }}
         >
           {subtitle}
         </p>

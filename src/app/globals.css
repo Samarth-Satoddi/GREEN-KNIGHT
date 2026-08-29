@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-primary: #0B6E4F;
   --color-primary-dark: #145A32;
@@ -53,12 +55,12 @@
 }
 
 .dark {
-  --cream: #0d1f17;
-  --cream-dark: #0a1a12;
-  --text: #F9FAFB;
-  --text-muted: #E5E7EB;
-  --glass-bg: rgba(11, 110, 79, 0.18);
-  --glass-border: rgba(11, 110, 79, 0.35);
+  --cream: #0a1b13;
+  --cream-dark: #06130d;
+  --text: #F8FAFC;
+  --text-muted: #CBD5E1;
+  --glass-bg: rgba(14, 35, 26, 0.88);
+  --glass-border: rgba(16, 185, 129, 0.24);
 }
 
 html,
@@ -112,10 +114,10 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(11, 110, 79, 0.16);
+  border: 1px solid var(--glass-border);
   box-shadow: 0 10px 30px rgba(11, 110, 79, 0.06), 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -123,6 +125,17 @@ body {
 .glass-card:hover {
   border-color: rgba(11, 110, 79, 0.38);
   box-shadow: 0 25px 50px rgba(11, 110, 79, 0.16), 0 10px 20px rgba(11, 110, 79, 0.08);
+}
+
+.dark .glass-card {
+  background: rgba(14, 35, 26, 0.88);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 15px rgba(16, 185, 129, 0.04);
+}
+
+.dark .glass-card:hover {
+  border-color: rgba(52, 211, 153, 0.45);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 25px rgba(16, 185, 129, 0.15);
 }
 
 /* Button Shine */

@@ -137,22 +137,22 @@ export default function TechStack() {
           transition={{ duration: 0.4 }}
           className="rounded-3xl p-8 sm:p-12 shadow-md"
           style={{
-            background: "rgba(255,255,255,0.85)",
+            background: "var(--glass-bg)",
             backdropFilter: "blur(20px)",
-            border: "1px solid rgba(11,110,79,0.16)",
+            border: "1px solid var(--glass-border)",
           }}
         >
           <div className="max-w-2xl mb-8">
             <h3
               className="text-2xl sm:text-3xl font-extrabold mb-3"
               style={{
-                color: "#111827",
+                color: "var(--text)",
                 fontFamily: "'Playfair Display', serif",
               }}
             >
               {techCategories[activeTab].title}
             </h3>
-            <p className="text-[16px] sm:text-[17px] leading-[1.75]" style={{ color: "#374151" }}>
+            <p className="text-[16px] sm:text-[17px] leading-[1.75]" style={{ color: "var(--text-muted)" }}>
               {techCategories[activeTab].description}
             </p>
           </div>
@@ -161,7 +161,7 @@ export default function TechStack() {
             {techCategories[activeTab].items.map((tech) => {
               const cardContent = (
                 <div
-                  className="flex items-center gap-3.5 px-4.5 py-3.5 rounded-xl text-[15px] sm:text-[16px] font-semibold cursor-pointer transition-all border border-black/5 bg-white/90 shadow-xs hover:border-[#0B6E4F] hover:shadow-md text-gray-800 hover:text-[#0B6E4F]"
+                  className="flex items-center gap-3.5 px-4.5 py-3.5 rounded-xl text-[15px] sm:text-[16px] font-semibold cursor-pointer transition-all border border-black/5 dark:border-emerald-800/40 bg-white/90 dark:bg-emerald-950/60 shadow-xs hover:border-[#0B6E4F] dark:hover:border-emerald-400 hover:shadow-md text-gray-800 dark:text-slate-100 hover:text-[#0B6E4F] dark:hover:text-emerald-400"
                 >
                   <GetTechIcon name={tech.name} size={22} />
                   <span>{tech.name}</span>
@@ -183,7 +183,7 @@ export default function TechStack() {
         <div className="mt-12 text-center">
           <Link
             href="/#tech-stack"
-            className="inline-flex items-center gap-2.5 px-8 py-4.5 rounded-xl font-bold text-[16px] sm:text-[17px] text-[#0B6E4F] border-2 border-[#0B6E4F] bg-white/80 hover:bg-[#0B6E4F] hover:text-white transition-all shadow-md"
+            className="inline-flex items-center gap-2.5 px-8 py-4.5 rounded-xl font-bold text-[16px] sm:text-[17px] text-[#0B6E4F] dark:text-emerald-400 border-2 border-[#0B6E4F] dark:border-emerald-500 bg-white/80 dark:bg-emerald-950/60 hover:bg-[#0B6E4F] dark:hover:bg-emerald-600 hover:text-white dark:hover:text-white transition-all shadow-md"
           >
             Explore Full Technology Radar
             <ArrowRight size={19} />

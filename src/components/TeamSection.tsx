@@ -12,7 +12,7 @@ export default function TeamSection() {
           subtitle="Green Knights of Tech & AI is led by veteran software engineers, AI researchers, and technical consultants."
         />
 
-        <div className="max-w-3xl mx-auto p-8 sm:p-12 rounded-3xl bg-white/78 backdrop-blur-md border border-[#0B6E4F]20 shadow-lg">
+        <div className="max-w-3xl mx-auto p-8 sm:p-12 rounded-3xl bg-[var(--glass-bg)] backdrop-blur-md border border-[var(--glass-border)] shadow-lg">
           <div className="w-16 h-16 rounded-2xl bg-[#0B6E4F]15 text-[#0B6E4F] flex items-center justify-center mx-auto mb-5">
             <Users size={32} />
           </div>
@@ -21,7 +21,7 @@ export default function TeamSection() {
             Leadership Profiles & Executive Bios
           </h3>
 
-          <p className="text-[16px] sm:text-[17px] text-gray-700 leading-[1.7] max-w-[750px] mx-auto mb-8">
+          <p className="text-[16px] sm:text-[17px] leading-[1.7] max-w-[750px] mx-auto mb-8" style={{ color: "var(--text-muted)" }}>
             Official leadership profiles, executive bios, and team highlights will be published upon client approval. Our team brings deep technical expertise across AI engineering, cloud architecture, and enterprise software delivery.
           </p>
 

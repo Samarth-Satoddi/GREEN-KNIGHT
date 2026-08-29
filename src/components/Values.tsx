@@ -110,9 +110,9 @@ function ValueCard({
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
       className="group relative rounded-3xl p-8 overflow-hidden transition-all duration-400 cursor-default"
       style={{
-        background: "rgba(255,255,255,0.82)",
+        background: "var(--glass-bg)",
         backdropFilter: "blur(16px)",
-        border: "1px solid rgba(11,110,79,0.16)",
+        border: "1px solid var(--glass-border)",
       }}
       whileHover={{
         y: -8,
@@ -140,7 +140,7 @@ function ValueCard({
         <h3
           className="text-xl sm:text-2xl lg:text-[26px] font-bold mb-3"
           style={{
-            color: "#111827",
+            color: "var(--text)",
             fontFamily: "'Playfair Display', serif",
           }}
         >
@@ -148,7 +148,7 @@ function ValueCard({
         </h3>
         <p
           className="text-[16px] sm:text-[17px] leading-[1.75]"
-          style={{ color: "#374151" }}
+          style={{ color: "var(--text-muted)" }}
         >
           {value.description}
         </p>

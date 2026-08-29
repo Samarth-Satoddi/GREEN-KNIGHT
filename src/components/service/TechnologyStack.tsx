@@ -23,8 +23,8 @@ export default function TechnologyStack({ service }: TechnologyStackProps) {
             key={i}
             className="p-6 rounded-2xl flex items-start gap-4 transition-all hover:border-[#0B6E4F]"
             style={{
-              background: "rgba(255,255,255,0.85)",
-              border: "1px solid rgba(11,110,79,0.16)",
+              background: "var(--glass-bg)",
+              border: "1px solid var(--glass-border)",
             }}
           >
             <div
@@ -38,10 +38,10 @@ export default function TechnologyStack({ service }: TechnologyStackProps) {
               <span className="text-[13px] font-bold uppercase tracking-wider block mb-1" style={{ color: "#C9A227" }}>
                 {tech.category}
               </span>
-              <h3 className="font-bold text-lg sm:text-xl mb-1.5" style={{ color: "#111827" }}>
+              <h3 className="font-bold text-lg sm:text-xl mb-1.5" style={{ color: "var(--text)" }}>
                 {tech.name}
               </h3>
-              <p className="text-[15px] sm:text-[16px] leading-[1.7]" style={{ color: "#374151" }}>
+              <p className="text-[15px] sm:text-[16px] leading-[1.7]" style={{ color: "var(--text-muted)" }}>
                 {tech.description}
               </p>
             </div>

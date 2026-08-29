@@ -32,8 +32,8 @@ export default function RelatedServices({ relatedSlugs }: RelatedServicesProps) 
               whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(11,110,79,0.12)" }}
               className="p-7 rounded-2xl h-full flex flex-col justify-between transition-all"
               style={{
-                background: "rgba(255,255,255,0.85)",
-                border: "1px solid rgba(11,110,79,0.16)",
+                background: "var(--glass-bg)",
+                border: "1px solid var(--glass-border)",
                 backdropFilter: "blur(10px)",
               }}
             >
@@ -45,11 +45,11 @@ export default function RelatedServices({ relatedSlugs }: RelatedServicesProps) 
                   <Sparkles size={16} className="text-[#C9A227]" />
                 </div>
 
-                <h3 className="font-bold text-xl sm:text-2xl mb-3 group-hover:text-[#0B6E4F] transition-colors" style={{ color: "#111827" }}>
+                <h3 className="font-bold text-xl sm:text-2xl mb-3 group-hover:text-[#0B6E4F] transition-colors" style={{ color: "var(--text)" }}>
                   {svc.title}
                 </h3>
 
-                <p className="text-[15px] sm:text-[16px] leading-[1.75] line-clamp-3 mb-4" style={{ color: "#374151" }}>
+                <p className="text-[15px] sm:text-[16px] leading-[1.75] line-clamp-3 mb-4" style={{ color: "var(--text-muted)" }}>
                   {svc.tagline}
                 </p>
               </div>

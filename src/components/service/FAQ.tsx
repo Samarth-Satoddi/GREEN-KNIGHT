@@ -55,8 +55,8 @@ export default function FAQ({ service }: FAQProps) {
               key={i}
               className="rounded-2xl overflow-hidden transition-all"
               style={{
-                background: "rgba(255,255,255,0.78)",
-                border: isOpen ? "1.5px solid #0B6E4F" : "1px solid rgba(11,110,79,0.14)",
+                background: "var(--glass-bg)",
+                border: isOpen ? "1.5px solid #0B6E4F" : "1px solid var(--glass-border)",
                 boxShadow: isOpen ? "0 10px 25px rgba(11,110,79,0.08)" : "none",
               }}
             >

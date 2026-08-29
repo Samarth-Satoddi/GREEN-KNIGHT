@@ -6,7 +6,6 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import BackToTop from '@/components/BackToTop';
 import ScrollProgress from '@/components/ScrollProgress';
-import CursorGlow from '@/components/CursorGlow';
 import RoundTableExperience from '@/components/roundtable/RoundTableExperience';
 import { roundTableServices } from '@/data/roundTableServices';
 import {
@@ -60,7 +59,6 @@ export default function RoundTablePage() {
   return (
     <>
       <ScrollProgress />
-      <CursorGlow />
       <Navbar />
 
       <main
