@@ -17,6 +17,8 @@ create table if not exists public.contact_submissions (
     service text,
     message text not null,
     status text not null default 'new' check (status in ('new', 'contacted', 'in_progress', 'converted', 'closed')),
+    source text not null default 'contact_form',
+    conversation jsonb,
     created_at timestamp with time zone default timezone('utc'::text, now()) not null,
     updated_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
@@ -25,6 +27,7 @@ create table if not exists public.contact_submissions (
 create index if not exists idx_contact_submissions_created_at on public.contact_submissions (created_at desc);
 create index if not exists idx_contact_submissions_status on public.contact_submissions (status);
 create index if not exists idx_contact_submissions_email on public.contact_submissions (email);
+create index if not exists idx_contact_submissions_source on public.contact_submissions (source);
 
 -- ==============================================================================
 -- 2. TABLE: admin_users

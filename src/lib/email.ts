@@ -8,6 +8,8 @@ interface EnquiryEmailParams {
   service?: string;
   message: string;
   submittedAt: string;
+  source?: string;
+  conversation?: Array<{ role: string; content: string }>;
 }
 
 const serviceLabels: Record<string, string> = {
@@ -37,6 +39,34 @@ export async function sendEnquiryNotification(params: EnquiryEmailParams): Promi
   const resend = new Resend(apiKey);
   const serviceTitle = params.service ? (serviceLabels[params.service] || params.service) : "General Inquiry";
   const adminUrl = params.id ? `${siteUrl}/admin/enquiries/${params.id}` : `${siteUrl}/admin/enquiries`;
+  const isChatbot = params.source === "chatbot";
+  const sourceLabel = isChatbot ? "🤖 AI Chatbot Lead" : "📩 Contact Form Submission";
+
+  const conversationHtml = params.conversation && params.conversation.length > 0
+    ? `
+      <div style="margin-top: 24px; padding-top: 20px; border-top: 1px dashed #e5e7eb;">
+        <div class="field-label">Relevant Chatbot Conversation</div>
+        <div style="background: #f1f5f9; border-radius: 10px; padding: 14px; margin-top: 8px; font-size: 13.5px; line-height: 1.5;">
+          ${params.conversation
+            .map(
+              (m) =>
+                `<div style="margin-bottom: 10px;">
+                  <strong style="color: ${m.role === "assistant" ? "#0B6E4F" : "#1E293B"};">${m.role === "assistant" ? "Green Knight AI" : escapeHtml(params.fullName)}:</strong>
+                  <div style="margin-top: 3px; color: #334155; white-space: pre-wrap;">${escapeHtml(m.content)}</div>
+                </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+    `
+    : "";
+
+  const conversationText = params.conversation && params.conversation.length > 0
+    ? `\n--- Relevant Chatbot Conversation ---\n` +
+      params.conversation
+        .map((m) => `${m.role === "assistant" ? "Green Knight AI" : params.fullName}: ${m.content}`)
+        .join("\n\n")
+    : "";
 
   const htmlContent = `
     <!DOCTYPE html>
@@ -50,7 +80,7 @@ export async function sendEnquiryNotification(params: EnquiryEmailParams): Promi
           .header h1 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
           .header p { margin: 6px 0 0; font-size: 14px; opacity: 0.9; }
           .body { padding: 32px; }
-          .badge { display: inline-block; padding: 4px 12px; background: rgba(201,162,39,0.15); color: #997B1A; border: 1px solid rgba(201,162,39,0.3); border-radius: 9999px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+          .badge { display: inline-block; padding: 4px 12px; background: rgba(11,110,79,0.12); color: #0B6E4F; border: 1px solid rgba(11,110,79,0.25); border-radius: 9999px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
           .field { margin-bottom: 18px; }
           .field-label { font-size: 12px; font-weight: 700; text-transform: uppercase; color: #6B7280; letter-spacing: 0.05em; margin-bottom: 4px; }
           .field-value { font-size: 16px; font-weight: 500; color: #111827; }
@@ -63,10 +93,10 @@ export async function sendEnquiryNotification(params: EnquiryEmailParams): Promi
         <div class="container">
           <div class="header">
             <h1>Green Knights</h1>
-            <p>New Website Customer Enquiry</p>
+            <p>${isChatbot ? "New AI Chatbot Lead" : "New Website Customer Enquiry"}</p>
           </div>
           <div class="body">
-            <span class="badge">New Submission</span>
+            <span class="badge">${sourceLabel}</span>
             
             <div class="field">
               <div class="field-label">Full Name</div>
@@ -94,9 +124,11 @@ export async function sendEnquiryNotification(params: EnquiryEmailParams): Promi
             </div>
 
             <div class="field" style="margin-top: 24px;">
-              <div class="field-label">Message</div>
+              <div class="field-label">Project Requirement</div>
               <div class="message-box">${escapeHtml(params.message)}</div>
             </div>
+
+            ${conversationHtml}
           </div>
           <div class="footer">
             <a href="${adminUrl}" class="button">View in Admin Portal &rarr;</a>
@@ -107,7 +139,8 @@ export async function sendEnquiryNotification(params: EnquiryEmailParams): Promi
   `;
 
   const textContent = `
-New Website Enquiry
+${isChatbot ? "New AI Chatbot Lead" : "New Website Customer Enquiry"}
+Source: ${sourceLabel}
 
 Name: ${params.fullName}
 Email: ${params.email}
@@ -115,8 +148,9 @@ Company: ${params.company || "Not provided"}
 Service Interest: ${serviceTitle}
 Submitted: ${params.submittedAt}
 
-Message:
+Project Details:
 ${params.message}
+${conversationText}
 
 Admin Link: ${adminUrl}
   `.trim();
@@ -125,7 +159,7 @@ Admin Link: ${adminUrl}
     const { error } = await resend.emails.send({
       from: "Green Knights Website <onboarding@resend.dev>",
       to: [recipientEmail],
-      subject: `New Website Enquiry - ${params.fullName}`,
+      subject: `${isChatbot ? "[Chatbot Lead] " : "New Enquiry - "}${params.fullName}`,
       html: htmlContent,
       text: textContent,
       replyTo: params.email,

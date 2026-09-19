@@ -43,7 +43,7 @@ export default async function AdminDashboardPage() {
   // Fetch counts grouped by status
   const { data: allSubmissions } = await supabaseAdmin
     .from("contact_submissions")
-    .select("id, full_name, email, company, service, status, created_at")
+    .select("id, full_name, email, company, service, status, source, created_at")
     .order("created_at", { ascending: false });
 
   const submissions = allSubmissions || [];
@@ -54,6 +54,7 @@ export default async function AdminDashboardPage() {
   const inProgressCount = submissions.filter((s) => s.status === "in_progress").length;
   const convertedCount = submissions.filter((s) => s.status === "converted").length;
   const closedCount = submissions.filter((s) => s.status === "closed").length;
+  const chatbotCount = submissions.filter((s) => s.source === "chatbot").length;
 
   const recentEnquiries = submissions.slice(0, 6);
 
@@ -111,6 +112,10 @@ export default async function AdminDashboardPage() {
         </div>
 
         <div className="flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-emerald-500/20 text-xs font-semibold text-emerald-400">
+            <span>🤖 Chatbot Leads:</span>
+            <span className="font-bold text-white">{chatbotCount}</span>
+          </div>
           <Link
             href="/admin/enquiries"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold shadow-lg shadow-emerald-950/50 transition-colors"
@@ -243,6 +248,9 @@ export default async function AdminDashboardPage() {
                     Client Name
                   </th>
                   <th scope="col" className="px-4 py-3.5 font-bold">
+                    Source
+                  </th>
+                  <th scope="col" className="px-4 py-3.5 font-bold">
                     Company
                   </th>
                   <th scope="col" className="px-4 py-3.5 font-bold">
@@ -280,6 +288,17 @@ export default async function AdminDashboardPage() {
                             {item.email}
                           </span>
                         </div>
+                      </td>
+                      <td className="px-4 py-4">
+                        {item.source === "chatbot" ? (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                            <span>🤖</span> Chatbot
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-800/80 text-slate-400 border border-slate-700/50">
+                            <span>📩</span> Form
+                          </span>
+                        )}
                       </td>
                       <td className="px-4 py-4 text-slate-300">
                         {item.company ? (

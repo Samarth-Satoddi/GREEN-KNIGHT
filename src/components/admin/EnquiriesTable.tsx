@@ -22,6 +22,8 @@ export interface ContactSubmission {
   service: string | null;
   message: string;
   status: string;
+  source?: string | null;
+  conversation?: Array<{ role: string; content: string }> | null;
   created_at: string;
   updated_at: string;
 }
@@ -72,6 +74,7 @@ export default function EnquiriesTable({ initialSubmissions }: EnquiriesTablePro
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<string>("all");
   const [selectedService, setSelectedService] = useState<string>("all");
+  const [selectedSource, setSelectedSource] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
 
   // Filter and search submissions
@@ -91,9 +94,14 @@ export default function EnquiriesTable({ initialSubmissions }: EnquiriesTablePro
         selectedService === "all" ||
         (item.service && item.service.toLowerCase() === selectedService.toLowerCase());
 
-      return matchesSearch && matchesStatus && matchesService;
+      const matchesSource =
+        selectedSource === "all" ||
+        (selectedSource === "chatbot" && item.source === "chatbot") ||
+        (selectedSource === "contact_form" && (!item.source || item.source === "contact_form"));
+
+      return matchesSearch && matchesStatus && matchesService && matchesSource;
     });
-  }, [initialSubmissions, searchQuery, selectedStatus, selectedService]);
+  }, [initialSubmissions, searchQuery, selectedStatus, selectedService, selectedSource]);
 
   // Pagination calculation
   const totalPages = Math.max(1, Math.ceil(filteredSubmissions.length / ITEMS_PER_PAGE));
@@ -114,6 +122,11 @@ export default function EnquiriesTable({ initialSubmissions }: EnquiriesTablePro
 
   const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedService(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleSourceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedSource(e.target.value);
     setCurrentPage(1);
   };
 
@@ -138,6 +151,23 @@ export default function EnquiriesTable({ initialSubmissions }: EnquiriesTablePro
 
         {/* Filters */}
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3">
+          {/* Source Filter */}
+          <div className="relative flex-1 sm:flex-initial shrink-0">
+            <select
+              value={selectedSource}
+              onChange={handleSourceChange}
+              className="w-full appearance-none bg-slate-950/90 border border-slate-800 rounded-xl pl-3 pr-8 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-emerald-500 cursor-pointer"
+            >
+              <option value="all">All Sources</option>
+              <option value="chatbot">🤖 Chatbot</option>
+              <option value="contact_form">📩 Contact Form</option>
+            </select>
+            <Filter
+              size={12}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
+            />
+          </div>
+
           {/* Status Filter */}
           <div className="relative flex-1 sm:flex-initial shrink-0">
             <select
@@ -202,6 +232,9 @@ export default function EnquiriesTable({ initialSubmissions }: EnquiriesTablePro
                     Client Name
                   </th>
                   <th scope="col" className="px-5 py-4 font-bold">
+                    Source
+                  </th>
+                  <th scope="col" className="px-5 py-4 font-bold">
                     Contact Email
                   </th>
                   <th scope="col" className="px-5 py-4 font-bold">
@@ -237,6 +270,19 @@ export default function EnquiriesTable({ initialSubmissions }: EnquiriesTablePro
                     >
                       <td className="px-5 py-4 font-semibold text-white">
                         <span>{item.full_name}</span>
+                      </td>
+                      <td className="px-5 py-4">
+                        {item.source === "chatbot" ? (
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                            <span>🤖</span>
+                            <span>Chatbot</span>
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-800/80 text-slate-400 border border-slate-700/50">
+                            <span>📩</span>
+                            <span>Contact Form</span>
+                          </span>
+                        )}
                       </td>
                       <td className="px-5 py-4 text-slate-300">
                         <a

@@ -14,6 +14,7 @@ import TechStack from "@/components/TechStack";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
 import TeamSection from "@/components/TeamSection";
+import ChatbotSection from "@/components/chatbot/ChatbotSection";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -42,6 +43,7 @@ export default function Home() {
         <Process />
         <TeamSection />
         <Testimonials />
+        <ChatbotSection />
         <Contact />
       </main>
 
