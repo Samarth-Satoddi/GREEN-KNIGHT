@@ -40,12 +40,33 @@ export async function POST(req: NextRequest) {
 
     if (!Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json(
-        { success: false, error: "Messages array is required." },
-        { status: 400 }
+        {
+          success: true,
+          message: "How can I help you today?",
+          provider: "knowledge-engine",
+        },
+        { status: 200 }
       );
     }
 
-    // 3. Sanitize and validate message structure
+    // 3. Extract and check latest user message
+    const userMessages = messages.filter((m) => m && m.role === "user");
+    const latestUserMsg = userMessages[userMessages.length - 1];
+    const latestContent =
+      typeof latestUserMsg?.content === "string" ? latestUserMsg.content.trim() : "";
+
+    if (!latestContent) {
+      return NextResponse.json(
+        {
+          success: true,
+          message: "How can I help you today?",
+          provider: "knowledge-engine",
+        },
+        { status: 200 }
+      );
+    }
+
+    // 4. Sanitize and validate message history structure
     const sanitizedMessages: LLMMessage[] = messages
       .slice(-15) // Keep last 15 messages for context
       .filter(
@@ -61,18 +82,27 @@ export async function POST(req: NextRequest) {
 
     if (sanitizedMessages.length === 0) {
       return NextResponse.json(
-        { success: false, error: "No valid message content provided." },
-        { status: 400 }
+        {
+          success: true,
+          message: "How can I help you today?",
+          provider: "knowledge-engine",
+        },
+        { status: 200 }
       );
     }
 
-    // 4. Generate response via LLMClient abstraction
+    // 5. Generate response via LLMClient abstraction
     const response = await llmClient.generateResponse(sanitizedMessages);
+
+    const safeMessage =
+      response.text && response.text.trim().length > 0
+        ? response.text.trim()
+        : "How can I help you today?";
 
     return NextResponse.json(
       {
         success: true,
-        message: response.text,
+        message: safeMessage,
         provider: response.provider,
       },
       { status: 200 }

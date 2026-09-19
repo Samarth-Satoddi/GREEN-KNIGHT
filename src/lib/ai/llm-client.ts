@@ -30,12 +30,25 @@ export class LLMClient {
 
     let lastError: string | null = null;
 
+    const userMessage =
+      messages.filter((m) => m.role === "user").pop()?.content.trim() || "";
+
+    // If message is empty/whitespace, immediately return standard prompt
+    if (!userMessage) {
+      return {
+        text: "How can I help you today?",
+        provider: "knowledge-engine",
+      };
+    }
+
     // 1. Try Google Gemini if configured
     if (geminiApiKey && !geminiApiKey.includes("placeholder")) {
       try {
         const response = await this.callGemini(messages, geminiApiKey);
-        if (response) {
-          return { text: response, provider: "gemini" };
+        if (response && response.trim().length > 0) {
+          return { text: response.trim(), provider: "gemini" };
+        } else {
+          console.warn("[LLMClient] Gemini returned empty/whitespace response. Using Knowledge Engine fallback.");
         }
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : String(err);
@@ -48,8 +61,10 @@ export class LLMClient {
     if (openaiApiKey && !openaiApiKey.includes("placeholder")) {
       try {
         const response = await this.callOpenAI(messages, openaiApiKey);
-        if (response) {
-          return { text: response, provider: "openai" };
+        if (response && response.trim().length > 0) {
+          return { text: response.trim(), provider: "openai" };
+        } else {
+          console.warn("[LLMClient] OpenAI returned empty/whitespace response. Using Knowledge Engine fallback.");
         }
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : String(err);
@@ -62,8 +77,10 @@ export class LLMClient {
     if (groqApiKey && !groqApiKey.includes("placeholder")) {
       try {
         const response = await this.callGroq(messages, groqApiKey);
-        if (response) {
-          return { text: response, provider: "groq" };
+        if (response && response.trim().length > 0) {
+          return { text: response.trim(), provider: "groq" };
+        } else {
+          console.warn("[LLMClient] Groq returned empty/whitespace response. Using Knowledge Engine fallback.");
         }
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : String(err);
@@ -80,12 +97,11 @@ export class LLMClient {
       );
     }
 
-    // If no API key is configured or external provider had a transient error
-    const userMessage =
-      messages.filter((m) => m.role === "user").pop()?.content.trim() || "";
+    // If no API key is configured or external provider had an issue
     const localAnswer = this.queryKnowledgeEngine(userMessage);
+    const finalText = localAnswer && localAnswer.trim().length > 0 ? localAnswer.trim() : "How can I help you today?";
     return {
-      text: localAnswer,
+      text: finalText,
       provider: "knowledge-engine",
     };
   }
@@ -131,7 +147,8 @@ export class LLMClient {
    */
   private async callGemini(messages: LLMMessage[], apiKey: string): Promise<string | null> {
     const systemInstruction = buildSystemPrompt();
-    const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+    const requestedModel = process.env.GEMINI_MODEL || "gemini-3.6-flash";
+    let activeModel = requestedModel;
 
     // Gemini requires multi-turn talk to start with role 'user'
     const firstUserIndex = messages.findIndex((m) => m.role === "user");
@@ -148,24 +165,48 @@ export class LLMClient {
       }
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+    const requestPayload = {
+      systemInstruction: { parts: [{ text: systemInstruction }] },
+      contents,
+      generationConfig: {
+        temperature: 0.3,
+        maxOutputTokens: 600,
+      },
+      safetySettings: [
+        { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
+        { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
+        { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
+        { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
+      ],
+    };
 
-    const res = await fetch(url, {
+    let url = `https://generativelanguage.googleapis.com/v1beta/models/${activeModel}:generateContent`;
+
+    let res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "x-goog-api-key": apiKey,
       },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: systemInstruction }] },
-        contents,
-        generationConfig: {
-          temperature: 0.3,
-          maxOutputTokens: 600,
-        },
-      }),
+      body: JSON.stringify(requestPayload),
       signal: AbortSignal.timeout(15000),
     });
+
+    // If configured model was 2.5-flash and returned 404 (model retired for new keys), fallback to gemini-3.6-flash
+    if (res.status === 404 && activeModel !== "gemini-3.6-flash") {
+      console.warn(`[LLMClient] Model ${activeModel} returned 404. Retrying with gemini-3.6-flash...`);
+      activeModel = "gemini-3.6-flash";
+      url = `https://generativelanguage.googleapis.com/v1beta/models/${activeModel}:generateContent`;
+      res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": apiKey,
+        },
+        body: JSON.stringify(requestPayload),
+        signal: AbortSignal.timeout(15000),
+      });
+    }
 
     if (!res.ok) {
       const errText = await res.text();
@@ -174,7 +215,11 @@ export class LLMClient {
     }
 
     const data = await res.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || null;
+    const parts = data.candidates?.[0]?.content?.parts;
+    const text = Array.isArray(parts)
+      ? parts.map((p: { text?: string }) => p?.text || "").filter(Boolean).join("\n").trim()
+      : null;
+    return text && text.length > 0 ? text : null;
   }
 
   /**
@@ -217,12 +262,14 @@ export class LLMClient {
    * Local Knowledge Engine
    * Contextual matching that answers verified Green Knights queries.
    */
-  private queryKnowledgeEngine(query: string): string {
-    const q = query.toLowerCase().trim();
+  public queryKnowledgeEngine(query: string): string {
+    const raw = (query || "").trim();
 
-    if (!q) {
-      return "Hello! How can the Green Knights assist your enterprise today?";
+    if (!raw) {
+      return "How can I help you today?";
     }
+
+    let q = raw.toLowerCase();
 
     // 0. Security & Prompt Injection Defense
     if (
@@ -233,19 +280,94 @@ export class LLMClient {
       return "I am the official Green Knights AI Assistant. I adhere strictly to verified company information and enterprise security policies. How can I assist you with Green Knights technology services or starting a project enquiry?";
     }
 
-    // 0b. Hallucination Guard for unverified confidential metrics
+    // 0a. Profanity & Bad Words Handling
+    const PROFANITY_PATTERN = /\b(fuck(ing|ed|er|s)?|shit(ty|s)?|bitch(es)?|bastard(s)?|asshole(s)?|cunt(s)?|dick(s)?|piss(ed)?|damn|bullshit)\b/i;
+
+    if (PROFANITY_PATTERN.test(q)) {
+      // Check if there is any substantive question/topic beyond the profanity
+      const stripped = q
+        .replace(/\b(fuck(ing|ed|er|s)?|shit(ty|s)?|bitch(es)?|bastard(s)?|asshole(s)?|cunt(s)?|dick(s)?|piss(ed)?|damn|bullshit)\b/gi, " ")
+        .replace(/\b(the|a|an|you|are|is|this|what|how|why|off|u|hey|yo|bro)\b/gi, " ")
+        .replace(/[^a-z0-9\s]/gi, " ")
+        .trim();
+
+      // If standalone profanity with no real query, respond professionally
+      if (!stripped || stripped.length < 3) {
+        return "I'm here to help. If you'd like, tell me what you need help with regarding Green Knights of Tech & AI.";
+      }
+
+      // Profanity is mixed with a question -> strip profanity and continue processing normally
+      q = q
+        .replace(/\b(fuck(ing|ed|er|s)?|shit(ty|s)?|bitch(es)?|bastard(s)?|asshole(s)?|cunt(s)?|dick(s)?|piss(ed)?|damn|bullshit)\b/gi, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    // 1. Greetings
+    if (
+      /^(hi|hello|hey|greetings|good\s*morning|good\s*afternoon|good\s*evening|howdy|sup)\b/i.test(q) ||
+      q === "hi" ||
+      q === "hello" ||
+      q === "hey"
+    ) {
+      return "Hello! 👋 I'm the Green Knights AI Assistant. I can help you explore our services, technologies, solutions, and project consultation. What would you like to know?";
+    }
+
+    // 2. Casual Conversation
+    if (
+      /\b(how\s+are\s+you|how's\s+it\s+going|how\s+is\s+it\s+going|what's\s+up|whats\s+up|how\s+is\s+your\s+day|how's\s+your\s+day|are\s+you\s+there|are\s+you\s+online|you\s+there|how\s+do\s+you\s+do)\b/i.test(q)
+    ) {
+      return "I'm doing great and ready to help! ⚔️ What would you like to explore about Green Knights of Tech & AI?";
+    }
+
+    // 3. Identity
+    if (
+      /\b(who\s+are\s+you|what\s+are\s+you|what\s+is\s+your\s+name|who\s+is\s+this|who\s+am\s+i\s+talking\s+to|what\s+is\s+green\s+knights\s+ai)\b/i.test(q)
+    ) {
+      return "I'm the Green Knights AI Assistant. I help visitors learn about Green Knights of Tech & AI, our services, technologies, engineering process, and how to get in touch with our team.";
+    }
+
+    // 4. Capabilities
+    if (
+      /\b(what\s+can\s+you\s+do|how\s+can\s+you\s+help(\s+me)?|what\s+are\s+your\s+capabilities|what\s+do\s+you\s+know|what\s+can\s+i\s+ask)\b/i.test(q) ||
+      q === "help me" ||
+      q === "how can you help"
+    ) {
+      return `As the Green Knights AI Assistant, I can help you:
+
+• **Explain Our Services:** AI Solutions, Software Development, Cloud, Cybersecurity, Digital Transformation, ERP, IT Consulting, and Data Analytics.
+• **Explain Technologies:** Our tech stack across modern frontend, backend, cloud platforms, and AI/ML frameworks.
+• **Explain Industries:** How we deliver solutions for Healthcare, BFSI, Retail, Manufacturing, EdTech, and Government.
+• **Explain Engineering Process:** Our structured 6-phase lifecycle from Discovery to 24/7 SLA Support.
+• **Provide Contact Information:** Verified headquarters address, official email, phone numbers, and business hours.
+• **Project Consultation & Requirements:** Help you scope your requirement and connect you with our engineering team within 24 hours.
+
+What would you like to explore today?`;
+    }
+
+    // 5. Thank You / Gratitude
+    if (
+      /\b(thank\s+you|thanks|thx|thank\s+u|many\s+thanks|appreciate\s+it)\b/i.test(q)
+    ) {
+      return "You're welcome! 😊 If you'd like, I can also help you explore our services or discuss your project.";
+    }
+
+    // 6. Hallucination Guard for unverified confidential metrics & missing facts
     if (
       /\b(revenue|turnover|annual\s+turnover|employee\s+count|how\s+many\s+employees|how\s+many\s+customers|who\s+is\s+(the\s+)?ceo|exact\s+prices?|service\s+prices?|hourly\s+rate|pricing\s+sheet|fortune\s+500|client\s+project\s+names|names\s+of\s+clients|sla\s+do\s+you\s+guarantee)\b/i.test(
         q
       ) ||
       /\b(who\s+are\s+your\s+clients|tell\s+me\s+your\s+pricing|what\s+is\s+your\s+pricing|give\s+me\s+your\s+pricing)\b/i.test(
         q
+      ) ||
+      /\b(company\s+fact.*not\s+exist|fact.*not\s+in\s+(the\s+)?knowledge|unverified\s+fact|secret\s+fact)\b/i.test(
+        q
       )
     ) {
       return CANONICAL_UNKNOWN_ANSWER;
     }
 
-    // 0c. Off-Topic Query Redirection
+    // 7. Off-Topic Query Redirection
     if (
       /\b(capital\s+of|cricket\s+match|tell\s+me\s+a\s+joke|write\s+(me\s+)?a\s+poem|weather\s+today|latest\s+news|president\s+of|cook\s+biryani|recipe|bitcoin)\b/i.test(
         q
@@ -253,11 +375,6 @@ export class LLMClient {
       /^(write\s+me\s+a\s+python\s+program|what\s+is\s+bitcoin)\b/i.test(q)
     ) {
       return "I am the official Green Knights technology assistant. While I can't assist with general topics, I would be delighted to help you explore our enterprise services in AI Solutions, Cloud Architecture, Cybersecurity, and Software Engineering. How can I assist your organization?";
-    }
-
-    // 1. Greetings
-    if (/^(hi|hello|hey|greetings|good morning|good afternoon|good evening)\b/i.test(q)) {
-      return "Hello! I'm the Green Knights AI Assistant. I can help you explore our services, technologies, and solutions. How can I help you today?";
     }
 
     // 2. Contact Information
